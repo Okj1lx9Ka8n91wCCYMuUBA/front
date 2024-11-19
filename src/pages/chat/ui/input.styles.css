@@ -1,0 +1,27 @@
+.input_container {
+    @apply bg-[#F1F3F6] px-[14px] py-[8px] rounded-[33px] flex justify-between items-center
+}
+
+.input_left {
+    @apply flex gap-x-2 h-auto items-center;
+
+    input {
+        @apply border-none outline-none bg-transparent text-[18px];
+        width: calc(100vw - 150px);
+
+        ::placeholder {
+            color: #A7AEBB;
+        }
+    }
+
+    img {
+        width: 23px;
+        height: 21px;
+    }
+
+}
+
+.arrow_container {
+    @apply flex justify-center items-center px-[14px] py-3 bg-[#3083FD] rounded-full shrink-0
+}
+

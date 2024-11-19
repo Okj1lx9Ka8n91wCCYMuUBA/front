@@ -1,0 +1,27 @@
+/* page.styles.css */
+.header_container {
+    @apply px-4 py-3 bg-[#F9F9F9] shadow-[0px_11px_20.4px_0px_rgba(223,230,243,0.33)] flex w-full justify-between;
+}
+
+.header_title {
+    @apply text-[25px] font-bold self-center;
+}
+
+.header_button {
+    @apply w-[50px] h-[50px] bg-white rounded-full flex items-center justify-center;
+}
+
+.header_spacer {
+    width: 50px;
+}
+
+.main-content {
+    @apply max-h-full;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.footer {
+    @apply absolute bottom-5 left-5 right-5
+}
