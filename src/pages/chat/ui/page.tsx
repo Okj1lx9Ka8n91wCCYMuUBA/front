@@ -3,6 +3,8 @@ import { Content } from '../../../shared/layout/Content.ts'
 import MenuIcon from '../../../assets/images/menu.svg'
 import './page.styles.css'
 import { ChatInput } from './input.ui.tsx'
+import { messagesStore } from '../model'
+import { MessagesList } from './messageList.ui.tsx'
 
 export const ChatPage = () => {
 	return (
@@ -21,6 +23,7 @@ export const ChatPage = () => {
 						<ChatInput />
 					</div>
 				</div>
+				<MessagesList messages={messagesStore.messages} />
 			</Content>
 		</IonPage>
 	)

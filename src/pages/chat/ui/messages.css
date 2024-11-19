@@ -1,0 +1,49 @@
+.messages_list {
+    @apply mx-4 mt-2 flex flex-col
+}
+
+.bot_avatar {
+    @apply w-[42px] h-[42px] rounded-full flex justify-center items-center bg-[#3083FD] shrink-0;
+
+    img {
+        width: 22px;
+        height: 20px;
+        margin-top: -4px;
+    }
+}
+
+.user_avatar {
+    @apply w-[42px] h-[42px] rounded-full shrink-0;
+}
+
+
+.message {
+
+    @apply flex gap-x-2;
+
+    max-width: calc(100% - 50px);
+
+    &:not(:first-child) {
+        margin-top: 16px;
+    }
+}
+
+.user_message {
+    @apply content-end;
+    align-self: flex-end;
+}
+
+.bot_message {}
+
+
+.message_time {
+    @apply text-[#7A7A7C] text-xs font-medium
+}
+
+.message_text {
+    @apply text-xs font-medium p-3
+}
+
+.user_message_text {
+    @apply text-white bg-[#85A9ED] rounded-[20px] rounded-tr-none
+}
