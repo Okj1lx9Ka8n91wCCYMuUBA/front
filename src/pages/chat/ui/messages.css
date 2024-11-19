@@ -16,7 +16,6 @@
     @apply w-[42px] h-[42px] rounded-full shrink-0;
 }
 
-
 .message {
 
     @apply flex gap-x-2;
@@ -46,4 +45,8 @@
 
 .user_message_text {
     @apply text-white bg-[#85A9ED] rounded-[20px] rounded-tr-none
+}
+
+.bot_message_text {
+    @apply text-[#244369] bg-[#D9E6FF] rounded-[20px] rounded-tl-none
 }
