@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">capacitor_conf</string>
+    <string name="title_activity_main">capacitor_conf</string>
+    <string name="package_name">app_hack_fr.example.com</string>
+    <string name="custom_url_scheme">app_hack_fr.example.com</string>
+</resources>
