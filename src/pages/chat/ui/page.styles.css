@@ -15,12 +15,19 @@
 }
 
 .main-content {
-    @apply max-h-full;
     display: flex;
+    max-height: calc(100vh - 200px);
+    padding-bottom: 100px;
     flex-direction: column;
     flex: 1;
+    overflow-y: auto;
 }
 
 .footer {
-    @apply absolute bottom-5 left-5 right-5
+    position: sticky;
+    bottom: 0;
+    padding: 10px 0px;
+    left: 20px;
+    right: 20px;
+    width: calc(100vw - 40px);
 }

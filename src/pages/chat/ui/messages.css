@@ -32,7 +32,8 @@
     align-self: flex-end;
 }
 
-.bot_message {}
+.bot_message {
+}
 
 
 .message_time {
@@ -49,4 +50,21 @@
 
 .bot_message_text {
     @apply text-[#244369] bg-[#D9E6FF] rounded-[20px] rounded-tl-none
+}
+
+.short_options_container {
+    @apply flex gap-x-2 mt-2.5
+}
+
+.short_option {
+    @apply w-full text-[18px] text-white flex justify-center items-center h-11 rounded-[25px];
+    background: linear-gradient(91.38deg, #7AAFFC 1.68%, #1372F4 95.96%);
+}
+
+.long_options_container {
+    @apply mt-2.5 flex flex-col gap-y-2
+}
+
+.long_option {
+    @apply text-xs
 }

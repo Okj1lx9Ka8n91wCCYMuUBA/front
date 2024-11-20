@@ -1,6 +1,7 @@
 import { Message } from '../model'
 import { CSSProperties, FC } from 'react'
 import BotAvatar from '../../../assets/images/bot.svg'
+import { BotMessageOptions } from './botMessageOptions.tsx'
 
 interface BotMessageProps {
 	message: Message
@@ -19,6 +20,7 @@ export const BotMessage: FC<BotMessageProps> = ({ message, style }) => {
 				}}>
 				<div className='message_time'>{message.time}</div>
 				<div className='message_text bot_message_text'>{message.text}</div>
+				{message.options && <BotMessageOptions options={message.options} />}
 			</div>
 		</div>
 	)
