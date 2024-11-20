@@ -1,15 +1,14 @@
 import InputClip from '../../../assets/images/clip.svg'
 import './input.styles.css'
 import Arrow from '../../../assets/images/Arrow.png'
-import { ChangeEvent, FC, Ref, useState } from 'react'
+import { ChangeEvent, FC, useState } from 'react'
 import { messagesStore } from '../model'
 
 interface ChatInputProps {
 	disabled: boolean
-	ref: Ref<any>
 }
 
-export const ChatInput: FC<ChatInputProps> = ({ disabled, ref }) => {
+export const ChatInput: FC<ChatInputProps> = ({ disabled}) => {
 	const [message, setMessage] = useState<string>('')
 
 	const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -23,7 +22,6 @@ export const ChatInput: FC<ChatInputProps> = ({ disabled, ref }) => {
 		}
 		messagesStore.sendMessage(message)
 		setMessage('')
-		ref.scrollTo({ behavior: 'smooth', top: document.body.scrollHeight })
 	}
 
 	return (

@@ -6,16 +6,14 @@ import { ChatInput } from './input.ui.tsx'
 import { messagesStore } from '../model'
 import { MessagesList } from './messageList.ui.tsx'
 import { observer } from 'mobx-react'
-import { useRef } from 'react'
 
 export const ChatPage = observer(() => {
-	const contentRef = useRef(null)
 
 	return (
-		<IonPage style={{ height: 'calc(100vh)', position: 'relative', background: '#F9F9F9' }}>
-			<Content style={{ height: 'calc(100vh - 170px)' }} ref={contentRef}>
+		<IonPage style={{ height: '', position: 'relative', background: '#F9F9F9' }}>
+			<Content style={{ height: 'calc(100vh - 170px)' }}>
 				<div className='header_container'>
-					<div className='header_spacer'></div> {/* Добавляем пустой элемент */}
+					<div className='header_spacer'></div>
 					<div className='header_title'>Чат-бот</div>
 					<div className='header_button'>
 						<img src={MenuIcon} alt='Меню' />

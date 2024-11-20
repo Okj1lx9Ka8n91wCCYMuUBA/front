@@ -19,7 +19,6 @@
 .message {
 
     @apply flex gap-x-2;
-
     max-width: calc(100% - 50px);
 
     &:not(:first-child) {

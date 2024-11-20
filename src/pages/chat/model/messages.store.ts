@@ -1,5 +1,6 @@
 import { makeAutoObservable } from 'mobx'
 import { Message } from './messages.types.ts'
+import {getCurrentTime} from "../../../shared/helpers/time.ts";
 
 export class MessagesStore {
 	private messages_: Message[] = [
@@ -20,11 +21,6 @@ export class MessagesStore {
 			time: '12:18',
 			options: ['Я только начинаю бизнес (стартаперы)', 'У меня уже есть бизнес (МСП)'],
 		},
-		{
-			sender: 'Bot',
-			text: 'Какой-то еще супер крутой текст, пампампам',
-			time: '12:18',
-		},
 	]
 
 	constructor() {
@@ -43,7 +39,7 @@ export class MessagesStore {
 	}
 
 	public sendMessage(text: string) {
-		this.messages_.push({ sender: 'User', time: '12:20', text: text })
+		this.messages_.push({ sender: 'User', time: getCurrentTime(), text: text })
 		console.log(this.messages_.length)
 	}
 }
