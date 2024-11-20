@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom'
 import { ChatPage } from './pages/chat'
 import { Footer } from './components/Footer'
 import { Switch } from 'react-router-dom'
+import {DocsPage} from "./pages/docs";
 
 const App: React.FC = () => (
 	<IonApp>
@@ -14,6 +15,7 @@ const App: React.FC = () => (
 					<div>Home Page</div>
 				</Route>
 				<Route path='/chat' component={ChatPage} />
+				<Route path="/docs" component={DocsPage}/>
 			</Switch>
 			<Footer />
 		</IonReactRouter>

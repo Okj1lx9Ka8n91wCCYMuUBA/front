@@ -9,7 +9,7 @@ interface FooterIconProps {
 
 export const Icon: FC<FooterIconProps> = ({ button, isActive, onClick }) => {
 	return (
-		<div className={'flex flex-col items-center gap-[2px]'} onClick={onClick}>
+		<div className={'flex flex-col items-center gap-[2px] z-10'} onClick={onClick}>
 			<img
 				src={isActive ? button.active : button.inactive}
 				alt={button.title}
