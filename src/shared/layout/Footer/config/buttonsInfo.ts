@@ -1,7 +1,7 @@
-import ChatIcon from '../../../assets/images/chat.svg'
-import DocumentsIcon from '../../../assets/images/documents.svg'
-import MainPageIcon from '../../../assets/images/main.svg'
-import ProfileIcon from '../../../assets/images/profile.svg'
+import ChatIcon from '../../../../assets/images/chat.svg'
+import DocumentsIcon from '../../../../assets/images/documents.svg'
+import MainPageIcon from '../../../../assets/images/main.svg'
+import ProfileIcon from '../../../../assets/images/profile.svg'
 
 export type ButtonInfo = {
 	title: string

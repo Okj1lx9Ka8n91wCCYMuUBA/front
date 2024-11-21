@@ -1,6 +1,6 @@
 import { IonHeader, IonPage, useIonRouter, UseIonRouterResult } from '@ionic/react'
 import { Content } from '../../../shared/layout/Content.ts'
-import { Footer } from '../../../components/Footer'
+import { Footer } from '../../../shared/layout/Footer'
 import { NewsCard } from './newsCard.ui.tsx'
 import './page.styles.css'
 import { newsStore } from '../../../app/state/newsStore.ts'

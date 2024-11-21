@@ -9,6 +9,7 @@ import { TestPage } from './pages/Test.tsx'
 import { NewsListPage } from './pages/newsList/ui/page.tsx'
 import { SingleNewsPage } from './pages/singleNews'
 import { IntroPage } from './pages/intro/page.tsx'
+import { IndividualRegisterPage } from './pages/auth/IndividualRegister'
 
 const App: React.FC = () => (
 	<IonApp>
@@ -19,6 +20,7 @@ const App: React.FC = () => (
 				<Route path='/docs' component={DocsPage} />
 				<Route path='/main' component={NewsListPage} />
 				<Route path='/test' component={TestPage} />
+				<Route path='/registration/individual' component={IndividualRegisterPage} />
 				<Route path='/news/:newsID' component={SingleNewsPage}></Route>
 			</Switch>
 		</IonReactRouter>

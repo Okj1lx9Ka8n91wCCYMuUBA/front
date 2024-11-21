@@ -1,0 +1,3 @@
+.blue_button {
+    @apply bg-[#1F41BB] text-white w-full h-[60px] text-xl rounded-[20px] outline-none;
+}

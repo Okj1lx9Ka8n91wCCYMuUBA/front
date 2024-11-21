@@ -22,10 +22,14 @@ export const IntroPage = () => {
 			<IonContent className=''>
 				<div className='text-center mt-10'>
 					<div>Начальная страница</div>
-					<button className='mt-[250px] 1mx-auto w-[280px] py-2 border-[1px] border-black rounded-[15px]'>
+					<button
+						className='mt-[250px] 1mx-auto w-[280px] py-2 border-[1px] border-black rounded-[15px]'
+						onClick={() => nav.push('/registration/individual')}>
 						Регистрация физических лиц
 					</button>
-					<button className='mt-[16px] 1mx-auto w-[280px] py-2 border-[1px] border-black rounded-[15px]'>
+					<button
+						className='mt-[16px] 1mx-auto w-[280px] py-2 border-[1px] border-black rounded-[15px]'
+						onClick={() => nav.push('registration/company')}>
 						Регистрация юридических лиц
 					</button>
 					<div className='mt-7' onClick={() => nav.push('/main')}>
