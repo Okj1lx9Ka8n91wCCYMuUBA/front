@@ -2,7 +2,6 @@ import { IonPage } from '@ionic/react'
 import { Content } from '../../../shared/layout/Content.ts'
 import { Footer } from '../../../components/Footer'
 import { NewsCard } from './newsCard.ui.tsx'
-import MockImage from '../../../assets/Mock/MockNewsImage.png'
 
 export const NewsListPage = () => {
 	return (
@@ -21,9 +20,9 @@ export const NewsListPage = () => {
 						<NewsCard
 							newsItem={{
 								img: MockImage,
-								title: 'Охуенная новость asdflka jsdlakjsdfh asdlfjasdff ;alskjf asd;lfj a;sdlfj asdf;lj adsf жфывдоа фыжывадло фываждо фыаж дло',
-								text: 'Описание еще пизже alskdfj asd;lfj a;lkdfjas d;fkajsdf;aksjf ;asdjf asdfksgdf sddfsgdf siudfh dsdifh ssdfhiusdhf asjdfhakjsdf ',
-								url: 'api.tisit.club',
+								title: 'Охуенная новость фвалждо фвжылдао фывжадло фывжадло фываждо жфывдоа фыжывадло фываждо фыаж дло',
+								text: 'Описание еще пизже фа фывашгыфвшаг зышщваг фызвшщаг фываждолыва жфдлоыва фжывдао фыважофывва ждло ',
+								url: 'http://api.tisit.club',
 							}}
 						/>
 					</div>
