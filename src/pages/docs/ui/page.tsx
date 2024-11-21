@@ -8,8 +8,10 @@ import { Footer } from '../../../shared/layout/Footer'
 export const DocsPage = () => {
 	const [showCam, setShowCam] = useState<boolean>(false)
 	const [screenshots, setScreenshots] = useState<string[]>([])
+	const [isCameraReady, setIsCameraReady] = useState<boolean>(false)
 
 	const webcamRef = useRef<Webcam>(null)
+	const overlayRef = useRef<HTMLDivElement>(null)
 
 	const capture = () => {
 		const imageSrc = webcamRef.current?.getScreenshot()
@@ -48,6 +50,38 @@ export const DocsPage = () => {
 		console.log(screenshots)
 	}, [screenshots])
 
+	useEffect(() => {
+		const updateOverlay = () => {
+			if (webcamRef.current && overlayRef.current) {
+				const video = webcamRef.current.video
+				const overlay = overlayRef.current
+
+				if (video && overlay) {
+					const cropWidth = video.videoWidth * 0.8
+					const cropHeight = video.videoHeight * 0.6
+					const cropX = (video.videoWidth - cropWidth) / 2
+					const cropY = (video.videoHeight - cropHeight) / 2
+
+					overlay.style.clipPath = `polygon(
+						0% 0%,
+						0% 100%,
+						${cropX}px 100%,
+						${cropX}px ${cropY}px,
+						${cropX + cropWidth}px ${cropY}px,
+						${cropX + cropWidth}px ${cropY + cropHeight}px,
+						${cropX}px ${cropY + cropHeight}px,
+						${cropX}px 100%,
+						100% 100%,
+						100% 0%
+					)`
+				}
+			}
+		}
+
+		const interval = setInterval(updateOverlay, 100)
+		return () => clearInterval(interval)
+	}, [isCameraReady])
+
 	return (
 		<>
 			<IonPage
@@ -62,16 +96,23 @@ export const DocsPage = () => {
 					</div>
 
 					{showCam && (
-						<div className='fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center'>
+						<div
+							className={`fixed inset-0 flex justify-center bg-black items-center ${
+								isCameraReady ? '' : 'hidden'
+							}`}>
 							<div className='relative w-full max-w-md h-full z-[10]'>
 								<Webcam
 									audio={false}
 									className='absolute inset-0 w-full h-full object-cover'
 									videoConstraints={{ height: 720, width: 1280 }}
 									ref={webcamRef}
+									onUserMedia={() => setIsCameraReady(true)}
 								/>
-								<div className='absolute inset-0 flex justify-center items-center'>
-									<div className='w-[80%] h-[60%] border-4 border-white rounded-lg'></div>
+								<div ref={overlayRef} className='absolute inset-0 z-[15]'></div>
+								<div className='absolute inset-0 flex justify-center items-center bg-black bg-opacity-20'>
+									<div className='relative w-[80%] h-[60%] border-1 bg-white bg-opacity-20 border-white rounded-lg'>
+										<div className='absolute inset-0 clip-path-rect'></div>
+									</div>
 								</div>
 							</div>
 							<button
