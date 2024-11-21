@@ -25,7 +25,9 @@ export const SingleNewsPage = () => {
 					<img src={BackArrow} alt='' onClick={() => nav.goBack()} />
 				</div>
 				<div className='text-xl text-[#02234D] mt-4'>{news.title}</div>
-				<div className='mt-2 text-[13px] opacity-75'>{news.url.split('//')[1]}</div>
+				<a className='mt-2 text-[13px] opacity-75 underline' href={news.url}>
+					{news.url.split('//')[1]}
+				</a>
 				<img src={news.img} alt={`${news.title}`} className='w-full mt-6' />
 				<div className='mt-5 text-[14px] text-[#02234D] whitespace-pre-line'>{`${news.text}`}</div>
 			</IonContent>

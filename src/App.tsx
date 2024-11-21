@@ -8,14 +8,13 @@ import { DocsPage } from './pages/docs'
 import { TestPage } from './pages/Test.tsx'
 import { NewsListPage } from './pages/newsList/ui/page.tsx'
 import { SingleNewsPage } from './pages/singleNews'
+import { IntroPage } from './pages/intro/page.tsx'
 
 const App: React.FC = () => (
 	<IonApp>
 		<IonReactRouter>
 			<Switch>
-				<Route path='/' exact={true}>
-					<div>Home Page</div>
-				</Route>
+				<Route path='/' exact component={IntroPage} />
 				<Route path='/chat' component={ChatPage} />
 				<Route path='/docs' component={DocsPage} />
 				<Route path='/main' component={NewsListPage} />
