@@ -1,11 +1,13 @@
-import { IonHeader, IonPage } from '@ionic/react'
+import { IonHeader, IonPage, useIonRouter, UseIonRouterResult } from '@ionic/react'
 import { Content } from '../../../shared/layout/Content.ts'
 import { Footer } from '../../../components/Footer'
 import { NewsCard } from './newsCard.ui.tsx'
-import { newsStore } from '../model'
 import './page.styles.css'
+import { newsStore } from '../../../app/state/newsStore.ts'
 
 export const NewsListPage = () => {
+	const nav: UseIonRouterResult = useIonRouter()
+
 	return (
 		<>
 			<IonPage
@@ -21,7 +23,11 @@ export const NewsListPage = () => {
 							return (
 								<>
 									{index !== 0 && <div className='separate_line'></div>}
-									<NewsCard newsItem={newsItem} key={newsItem.id} />
+									<NewsCard
+										newsItem={newsItem}
+										key={newsItem.id}
+										onClick={() => nav.push(`/news/${newsItem.id}`)}
+									/>
 								</>
 							)
 						})}

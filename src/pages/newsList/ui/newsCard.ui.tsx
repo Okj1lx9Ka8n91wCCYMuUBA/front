@@ -3,11 +3,12 @@ import { NewsItem } from '../types'
 
 interface NewsProps {
 	newsItem: NewsItem
+	onClick: () => void
 }
 
-export const NewsCard: FC<NewsProps> = ({ newsItem }) => {
+export const NewsCard: FC<NewsProps> = ({ newsItem, onClick }) => {
 	return (
-		<div className='flex gap-x-4'>
+		<div className='flex gap-x-4' onClick={onClick}>
 			<img
 				src={newsItem.img}
 				alt={newsItem.title}
