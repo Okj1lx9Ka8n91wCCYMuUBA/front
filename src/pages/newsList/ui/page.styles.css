@@ -1,0 +1,11 @@
+.header {
+    @apply px-4 py-3 w-full bg-white h-[72px] flex justify-center items-center text-[25px] font-medium;
+}
+
+.news_list {
+    @apply px-4 flex flex-col gap-y-6 py-4
+}
+
+.separate_line {
+    @apply h-px w-full bg-gray-300
+}

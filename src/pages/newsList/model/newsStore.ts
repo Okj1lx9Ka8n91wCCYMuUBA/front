@@ -10,7 +10,7 @@ export class NewsStore {
 		this.init()
 	}
 
-	private get news(): NewsItem[] {
+	public get news(): NewsItem[] {
 		return this.news_
 	}
 

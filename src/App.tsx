@@ -17,7 +17,7 @@ const App: React.FC = () => (
 				</Route>
 				<Route path='/chat' component={ChatPage} />
 				<Route path='/docs' component={DocsPage} />
-				<Route path='/news' component={NewsListPage} />
+				<Route path='/main' component={NewsListPage} />
 				<Route path='/test' component={TestPage} />
 			</Switch>
 		</IonReactRouter>
