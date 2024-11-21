@@ -2,6 +2,7 @@ import { IonContent, IonPage } from '@ionic/react'
 import { AuthInput } from '../../../shared/ui/AuthInput'
 import { useState } from 'react'
 import { AuthService } from '../../../entities/User/api'
+import { UserRegisterResponse } from '../../../entities/User/types'
 
 export const IndividualRegisterPage = () => {
 	const [name, setName] = useState<string>('')
@@ -11,15 +12,15 @@ export const IndividualRegisterPage = () => {
 
 	const handleRegister = async () => {
 		try {
-			const response = await AuthService.registerUsers({
+			const response: UserRegisterResponse = await AuthService.registerUsers({
 				email: email,
 				name: name,
 				password: password,
 				username: username,
 			})
 			console.log(response)
-		} catch (error: Error) {
-			alert(error.message)
+		} catch (error: Error | unknown) {
+			alert(error)
 		}
 	}
 
