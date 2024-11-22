@@ -13,6 +13,7 @@ import { IndividualRegisterPage } from './pages/auth/IndividualRegister'
 import { AuthFirstStep } from './pages/auth/AuthFirstStep.tsx'
 import { AuthSecondStep } from './pages/auth/AuthSecondStep.tsx'
 import { BusinessQuestionsPage } from './pages/BuisnessQuestions'
+import { ProfilePage } from './pages/profile'
 
 const App: React.FC = () => (
 	<IonApp>
@@ -23,6 +24,7 @@ const App: React.FC = () => (
 				<Route path='/docs' component={DocsPage} />
 				<Route path='/main' component={NewsListPage} />
 				<Route path='/test' component={TestPage} />
+				<Route path='/profile' component={ProfilePage} />
 				<Route path='/registration/individual' component={IndividualRegisterPage} />
 				<Route path='/news/:newsID' component={SingleNewsPage}></Route>
 				<Route path='/auth_first_step' component={AuthFirstStep} />

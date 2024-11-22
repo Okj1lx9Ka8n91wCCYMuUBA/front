@@ -67,7 +67,7 @@ export const AuthFirstStep = observer(() => {
 				<AuthStrategyButton
 					style={{ marginTop: 31, background: '#F1F3F6' }}
 					onClick={() => {
-						handleNextPage('inn')
+						handleNextPage('email')
 					}}>
 					<img src={EmailImage} style={{ alignSelf: 'center' }} alt={''} />
 					<div style={{ margin: 'auto' }}>По e-mail</div>
@@ -75,7 +75,7 @@ export const AuthFirstStep = observer(() => {
 				<AuthStrategyButton
 					style={{ marginTop: 17, background: '#F1F3F6' }}
 					onClick={() => {
-						handleNextPage('email')
+						handleNextPage('inn')
 					}}>
 					<img src={DocsImage} style={{ alignSelf: 'center' }} alt={''} />
 					<div style={{ margin: 'auto' }}>По ИНН</div>
