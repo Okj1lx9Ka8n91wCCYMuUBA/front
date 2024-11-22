@@ -1,10 +1,11 @@
-import { IonContent, IonPage } from '@ionic/react'
+import { IonContent, IonPage, useIonRouter, UseIonRouterResult } from '@ionic/react'
 import { AuthInput } from '../../../shared/ui/AuthInput'
 import { useState } from 'react'
 import { AuthService } from '../../../entities/User/api'
 import { UserRegisterResponse } from '../../../entities/User/types'
 
 export const IndividualRegisterPage = () => {
+	const nav: UseIonRouterResult = useIonRouter()
 	const [name, setName] = useState<string>('')
 	const [email, setEmail] = useState<string>('')
 	const [username, setUsername] = useState<string>('')
@@ -19,6 +20,7 @@ export const IndividualRegisterPage = () => {
 				username: username,
 			})
 			console.log(response)
+			nav.push('/main')
 		} catch (error: Error | unknown) {
 			alert(error)
 		}

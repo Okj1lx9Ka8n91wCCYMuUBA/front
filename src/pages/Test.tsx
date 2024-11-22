@@ -4,7 +4,7 @@ import { AuthService } from '../entities/User/api'
 
 export const TestPage = () => {
 	const getUsers = async () => {
-		const users: UserRegisterResponse = await AuthService.users()
+		const users: UserRegisterResponse[] = await AuthService.users()
 		console.log(users)
 	}
 

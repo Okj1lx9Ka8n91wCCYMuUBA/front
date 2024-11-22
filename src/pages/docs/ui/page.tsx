@@ -43,6 +43,7 @@ export const DocsPage = () => {
 
 				setScreenshots([...screenshots, canvas.toDataURL()])
 			}
+			setShowCam(false)
 		}
 	}
 

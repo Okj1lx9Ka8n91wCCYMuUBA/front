@@ -16,11 +16,8 @@ export class AuthService {
 		credentials: UserRegisterRequest
 	): Promise<UserRegisterResponse> => {
 		try {
-			const response = await axios.post<{ data: UserRegisterResponse }>(
-				'/api/user/',
-				credentials
-			)
-			return response.data.data
+			const response = await axios.post<UserRegisterResponse>('/api/user/', credentials)
+			return response.data
 		} catch (error: unknown) {
 			console.log(error)
 			throw Error('Ошибка при регистрации')
