@@ -13,7 +13,7 @@ export const IndividualRegisterPage = () => {
 
 	const handleRegister = async () => {
 		try {
-			const response: UserRegisterResponse = await AuthService.registerUsers({
+			const response: UserRegisterResponse = await AuthService.registerUser({
 				email: email,
 				name: name,
 				password: password,

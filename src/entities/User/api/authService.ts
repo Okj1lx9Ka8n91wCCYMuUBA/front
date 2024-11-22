@@ -12,7 +12,7 @@ export class AuthService {
 		}
 	}
 
-	static registerUsers = async (
+	static registerUser = async (
 		credentials: UserRegisterRequest
 	): Promise<UserRegisterResponse> => {
 		try {
@@ -22,5 +22,9 @@ export class AuthService {
 			console.log(error)
 			throw Error('Ошибка при регистрации')
 		}
+	}
+
+	static loginUser = async () => {
+		return 13
 	}
 }

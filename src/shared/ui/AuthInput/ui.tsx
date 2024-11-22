@@ -19,7 +19,7 @@ export const AuthInput: FC<AuthInputProps> = ({ value, setValue, label, ...rest 
 				{...rest}
 				value={value}
 				onChange={handleChange}
-				className='bg-[#F1F4FF] p-5 w-full placeholder:text-[#626262] focus:outline-1 focus:outline-[#1F41BB] text-[16px] rounded-[10px]'
+				className='bg-[white] p-5 w-full placeholder:text-[#626262] text-[18px] outline-none h-[52px] border-2 border-[#EAEAEA] rounded-[20px]'
 			/>
 		</>
 	)

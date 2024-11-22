@@ -10,6 +10,8 @@ import { NewsListPage } from './pages/newsList/ui/page.tsx'
 import { SingleNewsPage } from './pages/singleNews'
 import { IntroPage } from './pages/intro/page.tsx'
 import { IndividualRegisterPage } from './pages/auth/IndividualRegister'
+import { AuthFirstStep } from './pages/auth/AuthFirstStep.tsx'
+import { AuthSecondStep } from './pages/auth/AuthSecondStep.tsx'
 
 const App: React.FC = () => (
 	<IonApp>
@@ -22,6 +24,8 @@ const App: React.FC = () => (
 				<Route path='/test' component={TestPage} />
 				<Route path='/registration/individual' component={IndividualRegisterPage} />
 				<Route path='/news/:newsID' component={SingleNewsPage}></Route>
+				<Route path='/auth_first_step' component={AuthFirstStep} />
+				<Route path='/auth_second_step' component={AuthSecondStep} />
 			</Switch>
 		</IonReactRouter>
 	</IonApp>
