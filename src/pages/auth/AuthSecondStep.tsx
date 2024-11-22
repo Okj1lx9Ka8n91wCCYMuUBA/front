@@ -8,11 +8,8 @@ import { AuthLayout } from './config/AuthLayout.tsx'
 import { BackArrowHeader } from '../../shared/layout/BackArrowHeader'
 import { Heading } from '../../shared/ui/Heading'
 import { Inline } from '../../shared/layout/Inline'
-import { Centered } from '../../shared/layout/Centered'
 import { AuthStrategySwitcher } from '../../widgets/auth/AuthStrategySwitcher'
 import { renderInputFields } from './config/renderInputFields.tsx'
-import { handleAuth } from './config/handleAuth.ts'
-import { set } from 'zod'
 import { AuthService } from '../../entities/User/api'
 
 export const AuthSecondStep = observer(() => {
@@ -49,6 +46,12 @@ export const AuthSecondStep = observer(() => {
 				name: name,
 				username: username,
 			})
+			if (response) {
+				nav.push('/main')
+			}
+		}
+		if (mode === 'register' && strategy === 'inn') {
+			return
 		}
 		setPassword('')
 	}
@@ -58,31 +61,16 @@ export const AuthSecondStep = observer(() => {
 			<>
 				{mode === 'register' && (
 					<div style={{ marginBottom: 21 }}>
-						<button
-							onClick={handleContinue}
-							style={{
-								fontSize: 18,
-								width: window.innerWidth - 32,
-								height: 52,
-							}}>
-							Отправить код
-						</button>
-						<div
-							style={{
-								fontSize: 10,
-								marginLeft: 11,
-								color: '',
-								marginTop: 10,
-							}}>
+						<div style={{ color: '#7A7A7C', fontSize: 10 }}>
 							При регистрации вы соглашаетесь с{' '}
 							<Link style={{ color: 'black' }} to={ROUTES.overall.userAgreement}>
-								“Условиями пользования”
+								Условиями <br />
+								использования
 							</Link>{' '}
-							и{' '}
+							VCQ и{' '}
 							<Link to={ROUTES.overall.privacyPolicy} style={{ color: 'black' }}>
-								"Политикой конфиденциальности”
+								Политикой конфиденциальности
 							</Link>
-							.
 						</div>
 					</div>
 				)}
@@ -102,25 +90,20 @@ export const AuthSecondStep = observer(() => {
 			</BackArrowHeader>
 			<AuthStrategySwitcher style={{ marginTop: 24 }} />
 
-			{mode === 'register' && (
-				<Centered style={{ marginTop: 27 }}>
-					<div>Введите {strategy === 'email' ? 'свою эл.почту' : 'ИНН'}</div>
-				</Centered>
-			)}
 			{inputFields()}
 
-			{mode === 'login' && (
-				<button
-					onClick={handleContinue}
-					style={{
-						fontSize: 18,
-						marginTop: 25,
-						width: window.innerWidth - 32,
-						height: 52,
-					}}>
-					Войти
-				</button>
-			)}
+			<button
+				className='blue_button'
+				onClick={handleContinue}
+				style={{
+					fontSize: 18,
+					marginTop: 25,
+					width: window.innerWidth - 32,
+					background: 'linear-gradient(90deg, #68A0FD 0%, #1C78F5 99.99%)',
+					height: 52,
+				}}>
+				{mode === 'login' ? 'Войти' : 'Зарегистрироваться'}
+			</button>
 		</AuthLayout>
 	)
 })

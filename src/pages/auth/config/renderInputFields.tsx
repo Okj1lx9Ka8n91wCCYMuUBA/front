@@ -20,13 +20,29 @@ export const renderInputFields = (data: {
 			inn: () => (
 				<>
 					<AuthInput
-						style={{ marginTop: 39 }}
+						label={'Введите ИНН'}
+						labelStyle={{ marginTop: 17 }}
+						placeholder={'Инн'}
+						value={data.inn}
+						setValue={data.setInn}
+					/>
+					<AuthInput
+						label={'Введите имя'}
+						labelStyle={{ marginTop: 17 }}
+						placeholder={'Имя'}
+						value={data.name}
+						setValue={data.setName}
+					/>
+					<AuthInput
+						label={'Введите имя пользователя'}
+						labelStyle={{ marginTop: 17 }}
 						placeholder={'Имя пользователя'}
 						value={data.username}
 						setValue={data.setUsername}
 					/>
 					<AuthInput
-						style={{ marginTop: 17 }}
+						label={'Введите пароль'}
+						labelStyle={{ marginTop: 17 }}
 						placeholder={'Пароль'}
 						type={'password'}
 						value={data.password}
@@ -37,13 +53,29 @@ export const renderInputFields = (data: {
 			email: () => (
 				<>
 					<AuthInput
-						style={{ marginTop: 39 }}
+						label={'Введите имя'}
+						labelStyle={{ marginTop: 17 }}
+						placeholder={'Имя'}
+						value={data.name}
+						setValue={data.setName}
+					/>
+					<AuthInput
+						label={'Введите имя пользователя'}
+						labelStyle={{ marginTop: 17 }}
 						placeholder={'Имя пользователя'}
 						value={data.username}
 						setValue={data.setUsername}
 					/>
 					<AuthInput
-						style={{ marginTop: 17 }}
+						label={'Введите почту'}
+						labelStyle={{ marginTop: 17 }}
+						placeholder={'Почта'}
+						value={data.email}
+						setValue={data.setEmail}
+					/>
+					<AuthInput
+						label={'Введите пароль'}
+						labelStyle={{ marginTop: 17 }}
 						placeholder={'Пароль'}
 						type={'password'}
 						value={data.password}
@@ -56,37 +88,43 @@ export const renderInputFields = (data: {
 			inn: () => (
 				<>
 					<AuthInput
-						style={{ marginTop: 11 }}
+						label={'Введите ИНН'}
+						labelStyle={{ marginTop: 17 }}
 						placeholder={'Инн'}
 						value={data.inn}
 						setValue={data.setInn}
 					/>
 					<AuthInput
-						style={{ marginTop: 17 }}
+						label={'Введите имя'}
+						labelStyle={{ marginTop: 17 }}
 						placeholder={'Имя'}
 						value={data.name}
 						setValue={data.setName}
 					/>
 					<AuthInput
-						style={{ marginTop: 17 }}
+						label={'Введите имя пользователя'}
+						labelStyle={{ marginTop: 17 }}
 						placeholder={'Имя пользователя'}
 						value={data.username}
 						setValue={data.setUsername}
 					/>
 					<AuthInput
-						style={{ marginTop: 17 }}
+						label={'Введите почту'}
+						labelStyle={{ marginTop: 17 }}
 						placeholder={'Почта'}
 						value={data.email}
 						setValue={data.setEmail}
 					/>
 					<AuthInput
-						style={{ marginTop: 17 }}
+						label={'Введите название организации'}
+						labelStyle={{ marginTop: 17 }}
 						placeholder={'Название организации'}
 						value={data.organization}
 						setValue={data.setOrganization}
 					/>
 					<AuthInput
-						style={{ marginTop: 17 }}
+						label={'Введите пароль'}
+						labelStyle={{ marginTop: 17 }}
 						placeholder={'Пароль'}
 						type={'password'}
 						value={data.password}
@@ -97,25 +135,29 @@ export const renderInputFields = (data: {
 			email: () => (
 				<>
 					<AuthInput
-						style={{ marginTop: 11 }}
+						label={'Введите имя'}
+						labelStyle={{ marginTop: 17 }}
 						placeholder={'Имя'}
 						value={data.name}
 						setValue={data.setName}
 					/>
 					<AuthInput
-						style={{ marginTop: 17 }}
+						label={'Введите имя пользователя'}
+						labelStyle={{ marginTop: 17 }}
 						placeholder={'Имя пользователя'}
 						value={data.username}
 						setValue={data.setUsername}
 					/>
 					<AuthInput
-						style={{ marginTop: 17 }}
+						label={'Введите почту'}
+						labelStyle={{ marginTop: 17 }}
 						placeholder={'Почта'}
 						value={data.email}
 						setValue={data.setEmail}
 					/>
 					<AuthInput
-						style={{ marginTop: 17 }}
+						label={'Введите пароль'}
+						labelStyle={{ marginTop: 17 }}
 						placeholder={'Пароль'}
 						type={'password'}
 						value={data.password}
