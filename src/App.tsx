@@ -14,6 +14,7 @@ import { AuthFirstStep } from './pages/auth/AuthFirstStep.tsx'
 import { AuthSecondStep } from './pages/auth/AuthSecondStep.tsx'
 import { BusinessQuestionsPage } from './pages/BuisnessQuestions'
 import { ProfilePage } from './pages/profile'
+import { SupportPage } from './pages/support'
 
 const App: React.FC = () => (
 	<IonApp>
@@ -23,6 +24,7 @@ const App: React.FC = () => (
 				<Route path='/chat' component={ChatPage} />
 				<Route path='/docs' component={DocsPage} />
 				<Route path='/main' component={NewsListPage} />
+				<Route path='/support' component={SupportPage} />
 				<Route path='/test' component={TestPage} />
 				<Route path='/profile' component={ProfilePage} />
 				<Route path='/registration/individual' component={IndividualRegisterPage} />

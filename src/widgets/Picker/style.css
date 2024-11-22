@@ -1,0 +1,9 @@
+.tab {
+    @apply text-[14px] font-medium
+}
+
+.active_tab {
+    @apply text-[14px] font-semibold px-3 py-[10px] bg-white rounded-[30px];
+    box-shadow: 2px 0 12px 0 #8D8D8D40;
+
+}

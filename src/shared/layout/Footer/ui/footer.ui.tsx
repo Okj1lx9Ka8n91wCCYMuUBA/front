@@ -25,7 +25,7 @@ export const Footer = memo(() => {
 	return (
 		<IonFooter
 			className={
-				'fixed bottom-0 left-0 right-0 px-[34px] pb-4 pt-3 rounded-t-[15px] flex justify-between border-t-2'
+				'fixed bottom-0 left-0 right-0 px-[34px] pb-4 pt-3 rounded-t-[15px] flex justify-between border-t-2 bg-white'
 			}>
 			{buttons.map(button => {
 				return (
