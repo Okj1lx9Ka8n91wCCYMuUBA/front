@@ -9,6 +9,10 @@ export const DocsPage = () => {
 	const [showCam, setShowCam] = useState<boolean>(false)
 	const [screenshots, setScreenshots] = useState<string[]>([])
 	const [isCameraReady, setIsCameraReady] = useState<boolean>(false)
+	const [devices, setDevices] = useState<MediaDeviceInfo[]>([])
+	const [deviceId, setDeviceId] = useState<string | undefined>(undefined)
+	const [hasCameraPermission, setHasCameraPermission] = useState<boolean>(false)
+	const [currentDeviceIndex, setCurrentDeviceIndex] = useState<number>(0)
 
 	const webcamRef = useRef<Webcam>(null)
 	const overlayRef = useRef<HTMLDivElement>(null)
@@ -83,6 +87,40 @@ export const DocsPage = () => {
 		return () => clearInterval(interval)
 	}, [isCameraReady])
 
+	useEffect(() => {
+		const checkCameraPermission = async () => {
+			try {
+				const stream = await navigator.mediaDevices.getUserMedia({ video: true })
+				setHasCameraPermission(true)
+				stream.getTracks().forEach(track => track.stop())
+			} catch (error) {
+				console.error('Camera permission denied', error)
+			}
+		}
+
+		checkCameraPermission()
+	}, [])
+
+	useEffect(() => {
+		const getDevices = async () => {
+			if (!hasCameraPermission) return
+
+			const devices = await navigator.mediaDevices.enumerateDevices()
+			const videoDevices = devices.filter(device => device.kind === 'videoinput')
+			setDevices(videoDevices)
+			if (videoDevices.length > 0) {
+				setDeviceId(videoDevices[0].deviceId)
+			}
+		}
+		getDevices()
+	}, [hasCameraPermission])
+
+	const handleDeviceChange = () => {
+		const nextIndex = (currentDeviceIndex + 1) % devices.length
+		setCurrentDeviceIndex(nextIndex)
+		setDeviceId(devices[nextIndex].deviceId)
+	}
+
 	return (
 		<>
 			<IonPage
@@ -105,7 +143,7 @@ export const DocsPage = () => {
 								<Webcam
 									audio={false}
 									className='absolute inset-0 w-full h-full object-cover'
-									videoConstraints={{ height: 720, width: 1280 }}
+									videoConstraints={{ height: 720, width: 1280, deviceId }}
 									ref={webcamRef}
 									onUserMedia={() => setIsCameraReady(true)}
 								/>
@@ -125,6 +163,11 @@ export const DocsPage = () => {
 								onClick={capture}
 								className='absolute bottom-4 left-4 bg-blue-500 text-white px-4 py-2 rounded z-[20]'>
 								Сделать скриншот
+							</button>
+							<button
+								onClick={handleDeviceChange}
+								className='absolute bottom-4 right-4 bg-yellow-500 text-white px-4 py-2 rounded z-[20]'>
+								Переключить камеру
 							</button>
 						</div>
 					)}
