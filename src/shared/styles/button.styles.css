@@ -1,3 +1,5 @@
 .blue_button {
-    @apply bg-[#1F41BB] text-white w-full h-[60px] text-xl rounded-[20px] outline-none;
+    @apply text-white w-full h-[52px] text-xl rounded-[20px] outline-none;
+    background: linear-gradient(90deg, #68A0FD 0%, #1C78F5 99.99%);
+
 }
