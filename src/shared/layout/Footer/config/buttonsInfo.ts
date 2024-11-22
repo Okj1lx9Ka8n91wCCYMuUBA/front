@@ -1,7 +1,11 @@
-import ChatIcon from '../../../../assets/images/chat.svg'
-import DocumentsIcon from '../../../../assets/images/documents.svg'
-import MainPageIcon from '../../../../assets/images/main.svg'
-import ProfileIcon from '../../../../assets/images/profile.svg'
+import MainWhite from '../../../../assets/images/main.svg'
+import MainBlack from '../../../../assets/images/MainBlack.svg'
+import SupportWhite from '../../../../assets/images/SupportWhite.svg'
+import SupportBlack from '../../../../assets/images/SupportBlack.png'
+import ChatWhite from '../../../../assets/images/ChatWhite.png'
+import ChatBlack from '../../../../assets/images/chat.svg'
+import ProfileWhite from '../../../../assets/images/profile.svg'
+import ProfileBlack from '../../../../assets/images/ProfileBlack.svg'
 
 export type ButtonInfo = {
 	title: string
@@ -11,8 +15,8 @@ export type ButtonInfo = {
 }
 
 export const buttons: ButtonInfo[] = [
-	{ title: 'Главная', active: MainPageIcon, inactive: MainPageIcon, url: '/main' },
-	{ title: 'Документы', active: DocumentsIcon, inactive: DocumentsIcon, url: '/docs' },
-	{ title: 'Чат-бот', active: ChatIcon, inactive: ChatIcon, url: '/chat' },
-	{ title: 'Профиль', active: ProfileIcon, inactive: ProfileIcon, url: '/profile' },
+	{ title: 'Главная', active: MainBlack, inactive: MainWhite, url: '/main' },
+	{ title: 'Поддержка', active: SupportBlack, inactive: SupportWhite, url: '/support' },
+	{ title: 'Чат-бот', active: ChatBlack, inactive: ChatWhite, url: '/chat' },
+	{ title: 'Профиль', active: ProfileBlack, inactive: ProfileWhite, url: '/profile' },
 ]
