@@ -1,10 +1,10 @@
 import { IonContent, IonPage } from '@ionic/react'
-import { UserRegisterResponse } from '../entities/User/types'
+import { UserAuthResponse } from '../entities/User/types'
 import { AuthService } from '../entities/User/api'
 
 export const TestPage = () => {
 	const getUsers = async () => {
-		const users: UserRegisterResponse[] = await AuthService.users()
+		const users: UserAuthResponse[] = await AuthService.users()
 		console.log(users)
 	}
 

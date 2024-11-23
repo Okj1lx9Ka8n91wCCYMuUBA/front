@@ -14,25 +14,13 @@ export const renderInputFields = (data: {
 	setUsername: Dispatch<SetStateAction<string>>
 	organization: string
 	setOrganization: Dispatch<SetStateAction<string>>
+	phoneNumber: string
+	setPhoneNumber: Dispatch<SetStateAction<string>>
 }) => {
 	return {
 		login: {
 			inn: () => (
 				<>
-					<AuthInput
-						label={'Введите ИНН'}
-						labelStyle={{ marginTop: 17 }}
-						placeholder={'Инн'}
-						value={data.inn}
-						setValue={data.setInn}
-					/>
-					<AuthInput
-						label={'Введите имя'}
-						labelStyle={{ marginTop: 17 }}
-						placeholder={'Имя'}
-						value={data.name}
-						setValue={data.setName}
-					/>
 					<AuthInput
 						label={'Введите имя пользователя'}
 						labelStyle={{ marginTop: 17 }}
@@ -53,25 +41,11 @@ export const renderInputFields = (data: {
 			email: () => (
 				<>
 					<AuthInput
-						label={'Введите имя'}
-						labelStyle={{ marginTop: 17 }}
-						placeholder={'Имя'}
-						value={data.name}
-						setValue={data.setName}
-					/>
-					<AuthInput
 						label={'Введите имя пользователя'}
 						labelStyle={{ marginTop: 17 }}
 						placeholder={'Имя пользователя'}
 						value={data.username}
 						setValue={data.setUsername}
-					/>
-					<AuthInput
-						label={'Введите почту'}
-						labelStyle={{ marginTop: 17 }}
-						placeholder={'Почта'}
-						value={data.email}
-						setValue={data.setEmail}
 					/>
 					<AuthInput
 						label={'Введите пароль'}
@@ -95,11 +69,11 @@ export const renderInputFields = (data: {
 						setValue={data.setInn}
 					/>
 					<AuthInput
-						label={'Введите имя'}
+						label={'Номер телефона'}
 						labelStyle={{ marginTop: 17 }}
-						placeholder={'Имя'}
-						value={data.name}
-						setValue={data.setName}
+						placeholder={'Номер телефона'}
+						value={data.phoneNumber}
+						setValue={data.setPhoneNumber}
 					/>
 					<AuthInput
 						label={'Введите имя пользователя'}
@@ -107,20 +81,6 @@ export const renderInputFields = (data: {
 						placeholder={'Имя пользователя'}
 						value={data.username}
 						setValue={data.setUsername}
-					/>
-					<AuthInput
-						label={'Введите почту'}
-						labelStyle={{ marginTop: 17 }}
-						placeholder={'Почта'}
-						value={data.email}
-						setValue={data.setEmail}
-					/>
-					<AuthInput
-						label={'Введите название организации'}
-						labelStyle={{ marginTop: 17 }}
-						placeholder={'Название организации'}
-						value={data.organization}
-						setValue={data.setOrganization}
 					/>
 					<AuthInput
 						label={'Введите пароль'}

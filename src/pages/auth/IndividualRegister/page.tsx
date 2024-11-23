@@ -2,7 +2,7 @@ import { IonContent, IonPage, useIonRouter, UseIonRouterResult } from '@ionic/re
 import { AuthInput } from '../../../shared/ui/AuthInput'
 import { useState } from 'react'
 import { AuthService } from '../../../entities/User/api'
-import { UserRegisterResponse } from '../../../entities/User/types'
+import { UserAuthResponse } from '../../../entities/User/types'
 
 export const IndividualRegisterPage = () => {
 	const nav: UseIonRouterResult = useIonRouter()
@@ -13,7 +13,7 @@ export const IndividualRegisterPage = () => {
 
 	const handleRegister = async () => {
 		try {
-			const response: UserRegisterResponse = await AuthService.registerUser({
+			const response: UserAuthResponse = await AuthService.registerUser({
 				email: email,
 				name: name,
 				password: password,

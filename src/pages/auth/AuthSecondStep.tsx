@@ -22,6 +22,7 @@ export const AuthSecondStep = observer(() => {
 	const [username, setUsername] = useState<string>('')
 	const [name, setName] = useState<string>('')
 	const [organization, setOrganization] = useState<string>('')
+	const [phoneNumber, setPhoneNumber] = useState<string>('')
 
 	const inputFields = renderInputFields({
 		inn: inn,
@@ -36,22 +37,45 @@ export const AuthSecondStep = observer(() => {
 		setUsername: setUsername,
 		organization: organization,
 		setOrganization: setOrganization,
+		phoneNumber: phoneNumber,
+		setPhoneNumber: setPhoneNumber,
 	})[mode][strategy]
 
 	const handleContinue = async (): Promise<void> => {
 		if (mode === 'register' && strategy === 'email') {
-			const response = await AuthService.registerUser({
+			const response: boolean = await AuthService.registerUser({
 				password: password,
 				email: email,
 				name: name,
 				username: username,
+				user_type: 'INDIVIDUAL',
 			})
 			if (response) {
 				nav.push('/main')
 			}
 		}
 		if (mode === 'register' && strategy === 'inn') {
-			return
+			const response: boolean = await AuthService.registerCompany({
+				inn: inn,
+				password: password,
+				phone: phoneNumber,
+				username: username,
+				user_type: 'ORGANIZATION',
+			})
+			if (response) {
+				nav.push('/main')
+			}
+		}
+		if (mode === 'login') {
+			console.log(username)
+			console.log(password)
+			const response: boolean = await AuthService.loginUser({
+				username: username,
+				password: password,
+			})
+			if (response) {
+				nav.push('/main')
+			}
 		}
 		setPassword('')
 	}
