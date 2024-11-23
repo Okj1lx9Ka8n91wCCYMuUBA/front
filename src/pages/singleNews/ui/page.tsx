@@ -29,7 +29,7 @@ export const SingleNewsPage = () => {
 					{news.url.split('//')[1]}
 				</a>
 				<img src={news.img} alt={`${news.title}`} className='w-full mt-6' />
-				<div className='mt-5 text-[14px] text-[#02234D] whitespace-pre-line'>{`${news.text}`}</div>
+				<div className='mt-5 text-[14px] text-[#02234D] whitespace-pre-line'>{`${news.url}`}</div>
 			</IonContent>
 		</IonPage>
 	)
