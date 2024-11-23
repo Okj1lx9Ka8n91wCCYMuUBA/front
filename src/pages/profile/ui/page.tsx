@@ -4,8 +4,14 @@ import { userState } from '../../../app/state/userState.ts'
 import SettingsImage from '../../../assets/images/settings.svg'
 import { Picker } from '../../../widgets/Picker'
 import { RequestsList } from './requestsList.ui.tsx'
+import { observer } from 'mobx-react'
+import { useEffect } from 'react'
 
-export const ProfilePage = () => {
+export const ProfilePage = observer(() => {
+	useEffect(() => {
+		userState.updateData()
+	}, [])
+
 	return (
 		<IonPage className='h-[100vh] p-5 bg-[#F9F9F9]'>
 			<div className='bg-[#F9F9F9]'>
@@ -36,4 +42,4 @@ export const ProfilePage = () => {
 			<Footer />
 		</IonPage>
 	)
-}
+})

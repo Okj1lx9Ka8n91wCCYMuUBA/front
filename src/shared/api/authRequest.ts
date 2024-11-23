@@ -13,6 +13,8 @@ api.interceptors.request.use(
 		const token = await getFromLocalStorage('TOKEN')
 		if (token) {
 			config.headers['Authorization'] = `Bearer ${token}`
+		} else {
+			window.location.href = '/'
 		}
 		return config
 	},
