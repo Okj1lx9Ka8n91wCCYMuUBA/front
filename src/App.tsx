@@ -16,6 +16,7 @@ import { BusinessQuestionsPage } from './pages/BuisnessQuestions'
 import { ProfilePage } from './pages/profile'
 import { SupportPage } from './pages/support'
 import { GrantPage } from './pages/grant'
+import { GrantApplicationPage } from './pages/grantApplication'
 
 const App: React.FC = () => (
 	<IonApp>
@@ -30,7 +31,8 @@ const App: React.FC = () => (
 				<Route path='/profile' component={ProfilePage} />
 				<Route path='/registration/individual' component={IndividualRegisterPage} />
 				<Route path='/news/:newsID' component={SingleNewsPage} />
-				<Route path={'/grant/:grandID'} component={GrantPage} />
+				<Route path={'/grant/:grantID/application'} component={GrantApplicationPage} />
+				<Route path={'/grant/:grantID'} component={GrantPage} />
 				<Route path='/auth_first_step' component={AuthFirstStep} />
 				<Route path='/auth_second_step' component={AuthSecondStep} />
 				<Route path='/business_questions' component={BusinessQuestionsPage} />

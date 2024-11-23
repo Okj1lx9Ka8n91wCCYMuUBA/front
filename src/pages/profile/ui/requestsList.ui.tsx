@@ -44,7 +44,7 @@ export const RequestsList = () => {
 									{request.grantApplication.time}
 								</div>
 							</div>
-							<Status type={'bad'} title={request.grantApplication.status}></Status>
+							<Status type={'cool'} title={request.grantApplication.status}></Status>
 						</div>
 					</div>
 				)

@@ -19,6 +19,7 @@ export const ProfilePage = observer(() => {
 					<div></div>
 					<div className='mr-[-30px] flex flex-col items-center'>
 						<img
+							className={'rounded-full'}
 							src={userState.image}
 							alt='Аватар пользователя'
 							width={101}

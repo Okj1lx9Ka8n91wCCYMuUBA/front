@@ -2,6 +2,7 @@ import { Message } from '../model'
 import { CSSProperties, FC } from 'react'
 import { userInfoStore } from '../../../entities/User'
 import BotAvatar from '../../../assets/images/bot.svg'
+import { userState } from '../../../app/state/userState.ts'
 
 interface UserMessageProps {
 	message: Message
@@ -17,8 +18,8 @@ export const UserMessage: FC<UserMessageProps> = ({ message, style }) => {
 				<img src={userAvatar} alt='Аватар пользователя' className='user_avatar' />
 			)}
 			{!userAvatar && (
-				<div className='bot_avatar'>
-					<img src={BotAvatar} alt='Дефолтная аватарка' />
+				<div className='user_avatar'>
+					<img src={userState.image} alt='Дефолтная аватарка' />
 				</div>
 			)}
 			<div

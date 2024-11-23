@@ -48,7 +48,7 @@
 }
 
 .bot_message_text {
-    @apply text-[#244369] bg-[#D9E6FF] rounded-[20px] rounded-tl-none
+    @apply text-[#244369] bg-[#D9E6FF] rounded-[20px] rounded-tl-none whitespace-pre
 }
 
 .short_options_container {

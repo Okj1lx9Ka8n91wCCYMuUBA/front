@@ -1,25 +1,36 @@
 import { makeAutoObservable } from 'mobx'
 import { Message } from './messages.types.ts'
-import {getCurrentTime} from "../../../shared/helpers/time.ts";
+import { getCurrentTime } from '../../../shared/helpers/time.ts'
 
 export class MessagesStore {
 	private messages_: Message[] = [
 		{
+			sender: 'Bot',
+			text: `Добро пожаловать в чатбот! 
+Мы поможем вам составить бизнес-план,
+найти гранты или поддержку инвесторов.
+Введите ИНН.`,
+			time: '12:18',
+			options: [],
+		},
+		{
 			sender: 'User',
-			text: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."',
-			time: '12:17',
+			text: '7707083893',
+			time: '12:19',
 		},
 		{
 			sender: 'Bot',
-			text: 'Какой-то еще супер крутой текст, пампампам',
-			time: '12:18',
+			text: `Вот информация о компании с ИНН 7707083893:
+Название: ПАО "Сбербанк"
+ОГРН: 1027700132195
+Дата регистрации: 10.08.1990\n
+Юридический адрес: г. Москва, ул. Вавилова, д. 19\n Статус: Действующая\n
+Основной вид деятельности (ОКВЭД): 64.19 
+— Деятельность по предоставлению финансовых услуг, 
+кроме услуг по страхованию и пенсионному обеспечению.\n
+Это ваш бизнес?`,
 			options: ['Да', 'Нет'],
-		},
-		{
-			sender: 'Bot',
-			text: 'Какой-то еще супер крутой текст, пампампам',
-			time: '12:18',
-			options: ['Я только начинаю бизнес (стартаперы)', 'У меня уже есть бизнес (МСП)'],
+			time: '12:20',
 		},
 	]
 
