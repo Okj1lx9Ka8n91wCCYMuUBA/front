@@ -1,11 +1,13 @@
-import { IonPage } from '@ionic/react'
+import { IonPage, useIonRouter } from '@ionic/react'
 import { BackArrowHeader } from '../../../shared/layout/BackArrowHeader'
 import { Heading } from '../../../shared/ui/Heading'
 
 export const GrantPage = () => {
+	const nav = useIonRouter()
+
 	return (
 		<IonPage className={'h-[100vh] bg-[#F9F9F9] p-5'}>
-			<BackArrowHeader>
+			<BackArrowHeader goBackFunction={() => nav.goBack()}>
 				<Heading>
 					Конкурс Росмолодёжь.Гранты в рамках Молодёжного слёта «Поколение Z»
 				</Heading>
