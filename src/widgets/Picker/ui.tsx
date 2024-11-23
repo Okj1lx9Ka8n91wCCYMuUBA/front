@@ -10,10 +10,11 @@ export const Picker: FC<PickerProps> = ({ blocks }) => {
 
 	return (
 		<>
-			<div className={'flex gap-x-6 items-center'}>
+			<div className={'flex px-1 gap-x-6 items-center overflow-x-auto py-1'}>
 				{blocks.map((block, index) => {
 					return (
 						<div
+							style={{ whiteSpace: 'nowrap' }}
 							className={index === activeIndex ? 'active_tab' : 'tab'}
 							onClick={() => setActiveIndex(index)}>
 							{block.title}
