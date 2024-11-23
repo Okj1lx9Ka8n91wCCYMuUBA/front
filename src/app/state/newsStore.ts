@@ -24,6 +24,7 @@ export class NewsStore {
 
 	private async init(): Promise<void> {
 		this.news_ = await NewsService.getNews()
+		console.log(this.news_)
 	}
 }
 

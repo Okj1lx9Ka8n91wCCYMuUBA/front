@@ -5,8 +5,13 @@ import { NewsCard } from './newsCard.ui.tsx'
 import './page.styles.css'
 import { newsStore } from '../../../app/state/newsStore.ts'
 import { MainNewsCard } from './mainNewsCard.tsx'
+import { observer } from 'mobx-react'
 
-export const NewsListPage = () => {
+export const NewsListPage = observer(() => {
+	if (newsStore.news.length === 0) {
+		return
+	}
+
 	return (
 		<>
 			<IonPage
@@ -19,12 +24,8 @@ export const NewsListPage = () => {
 				<Content className={'p-5'}>
 					<MainNewsCard newsItem={newsStore.news[0]} />
 					<div className='news_list'>
-						{newsStore.news.map(newsItem => {
-							return (
-								<>
-									<NewsCard newsItem={newsItem} key={newsItem.id} />
-								</>
-							)
+						{newsStore.news.map((newsItem, index) => {
+							return index !== 0 && <NewsCard newsItem={newsItem} key={newsItem.id} />
 						})}
 					</div>
 				</Content>
@@ -32,4 +33,4 @@ export const NewsListPage = () => {
 			<Footer />
 		</>
 	)
-}
+})
