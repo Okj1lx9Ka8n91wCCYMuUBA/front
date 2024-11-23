@@ -3,6 +3,9 @@ apply plugin: 'com.android.application'
 android {
     namespace "app_hack_fr.example.com"
     compileSdk rootProject.ext.compileSdkVersion
+    aaptOptions {
+        noCompress 'png'
+    }
     defaultConfig {
         applicationId "app_hack_fr.example.com"
         minSdkVersion rootProject.ext.minSdkVersion

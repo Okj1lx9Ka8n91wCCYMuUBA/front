@@ -34,9 +34,7 @@ export const BusinessQuestionsPage = () => {
 				annual_revenue: answer9,
 				okved_codes: answer10,
 			})
-			if (result) {
-				nav.push('/main')
-			}
+			nav.push('/main')
 		}
 	}
 
