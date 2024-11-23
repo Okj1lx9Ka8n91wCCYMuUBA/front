@@ -1,8 +1,10 @@
-import { IonContent, IonPage } from '@ionic/react'
+import { IonContent, IonPage, useIonRouter } from '@ionic/react'
 import { Question } from './question.tsx'
 import { useState } from 'react'
+import { GrantTypeService } from '../../../entities/User/api'
 
 export const BusinessQuestionsPage = () => {
+	const nav = useIonRouter()
 	const [step, setStep] = useState<number>(0)
 
 	const [answer1, setAnswer1] = useState<string>('')
@@ -15,11 +17,26 @@ export const BusinessQuestionsPage = () => {
 	const [answer8, setAnswer8] = useState<string>('')
 	const [answer9, setAnswer9] = useState<string>('')
 	const [answer10, setAnswer10] = useState<string>('')
-	const [answer11, setAnswer11] = useState<string>('')
 
-	const handleNext = () => {
-		if (step < 2) {
+	const handleNext = async () => {
+		if (step < 1) {
 			setStep(prev => prev + 1)
+		} else {
+			const result: boolean = await GrantTypeService.createQuestions({
+				requested_amount: answer1,
+				grant_purpose: answer2,
+				prepared_documents: answer3,
+				patents_or_innovations: answer4,
+				previous_grants: answer5,
+				operational_regions: answer6,
+				business_size: answer7,
+				project_idea: answer8,
+				annual_revenue: answer9,
+				okved_codes: answer10,
+			})
+			if (result) {
+				nav.push('/main')
+			}
 		}
 	}
 
@@ -102,22 +119,13 @@ export const BusinessQuestionsPage = () => {
 							answer={answer10}
 							long={true}
 							setAnswer={setAnswer10}
-							title={'Какая основная идея вашего проекта?'}
+							title={'Ввод кодов ОКВЭД (род детяельности)'}
 						/>
 					</>
 				)}
 
-				{step === 2 && (
-					<Question
-						title={'Ввод кодов ОКВЭД (род деятельности)'}
-						long={true}
-						answer={answer11}
-						setAnswer={setAnswer11}
-					/>
-				)}
-
 				<button className='blue_button mt-7' onClick={handleNext}>
-					{step === 2 ? 'Отправить' : 'Продолжить'}
+					{step === 1 ? 'Отправить' : 'Продолжить'}
 				</button>
 			</IonContent>
 		</IonPage>

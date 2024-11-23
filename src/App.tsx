@@ -31,7 +31,7 @@ const App: React.FC = () => (
 				<Route path='/news/:newsID' component={SingleNewsPage}></Route>
 				<Route path='/auth_first_step' component={AuthFirstStep} />
 				<Route path='/auth_second_step' component={AuthSecondStep} />
-				<Route path='/business_quiestions' component={BusinessQuestionsPage} />
+				<Route path='/business_questions' component={BusinessQuestionsPage} />
 			</Switch>
 		</IonReactRouter>
 	</IonApp>

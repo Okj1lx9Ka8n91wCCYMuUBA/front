@@ -51,7 +51,9 @@ export const AuthSecondStep = observer(() => {
 				user_type: 'INDIVIDUAL',
 			})
 			if (response) {
-				nav.push('/main')
+				nav.push('/business_questions')
+			} else {
+				alert('Ошибка при регистрации')
 			}
 		}
 		if (mode === 'register' && strategy === 'inn') {
@@ -63,7 +65,9 @@ export const AuthSecondStep = observer(() => {
 				user_type: 'ORGANIZATION',
 			})
 			if (response) {
-				nav.push('/main')
+				nav.push('/business_questions')
+			} else {
+				alert('Ошибка при регистрации')
 			}
 		}
 		if (mode === 'login') {
