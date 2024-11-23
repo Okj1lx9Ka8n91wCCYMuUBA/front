@@ -16,7 +16,7 @@
 
 .main-content {
     display: flex;
-    max-height: calc(100vh - 250px); /* Magic DNT */
+    max-height: calc(100vh - 220px); /* Magic DNT */
     flex-direction: column;
     flex: 1;
     overflow-y: auto;

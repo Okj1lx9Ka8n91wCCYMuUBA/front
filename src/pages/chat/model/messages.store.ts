@@ -32,6 +32,11 @@ export class MessagesStore {
 			options: ['Да', 'Нет'],
 			time: '12:20',
 		},
+		{
+			sender: 'User',
+			text: 'Да',
+			time: '12:20',
+		},
 	]
 
 	constructor() {
@@ -50,6 +55,7 @@ export class MessagesStore {
 	}
 
 	public sendMessage(text: string) {
+		console.log(this.messages_)
 		this.messages_.push({ sender: 'User', time: getCurrentTime(), text: text })
 		console.log(this.messages_.length)
 	}

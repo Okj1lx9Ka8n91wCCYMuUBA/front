@@ -1,5 +1,5 @@
 .input_container {
-    @apply bg-[#F1F3F6] px-[14px] py-[8px] rounded-[33px] flex justify-between items-center
+    @apply bg-[#F1F3F6] px-[14px] rounded-[33px] flex justify-between items-center
 }
 
 .input_left {

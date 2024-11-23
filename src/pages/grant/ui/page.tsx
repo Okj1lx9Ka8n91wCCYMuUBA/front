@@ -74,13 +74,6 @@ export const GrantPage = () => {
 						https://grants.myrosmol.ru/events/98297986-f23d-4060-89ec-b151755a6f02
 					</a>
 				</div>
-				<button
-					className='blue_button mt-10'
-					onClick={() => {
-						nav.push(`/grant/${grantID}/application`)
-					}}>
-					Подать заявку
-				</button>
 			</div>
 		</IonPage>
 	)

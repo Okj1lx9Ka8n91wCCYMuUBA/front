@@ -9,7 +9,7 @@ import { useEffect } from 'react'
 
 export const ProfilePage = observer(() => {
 	useEffect(() => {
-		userState.updateData()
+		// userState.updateData()
 	}, [])
 
 	return (

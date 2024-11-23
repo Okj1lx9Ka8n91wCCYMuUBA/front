@@ -11,8 +11,8 @@ import { Footer } from '../../../shared/layout/Footer'
 export const ChatPage = observer(() => {
 	return (
 		<>
-			<IonPage style={{ height: '', position: 'relative', background: '#F9F9F9' }}>
-				<Content style={{ height: 'calc(100vh - 154px)' }}>
+			<IonPage style={{ height: '100vh', position: 'relative', background: '#F9F9F9' }}>
+				<Content style={{ height: 'calc(100vh - 144px)' }}>
 					<div className='header_container'>
 						<div className='header_spacer'></div>
 						<div className='header_title'>Чат-бот</div>

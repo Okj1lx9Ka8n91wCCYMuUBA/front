@@ -23,8 +23,8 @@ export class AuthService {
 
 	static registerUser = async (credentials: UserRegisterRequest): Promise<boolean> => {
 		try {
-			const response = await axios.post<UserAuthResponse>('/api/user/', credentials)
-			await setToLocalStorage('TOKEN', response.data.access_token)
+			// const response = await axios.post<UserAuthResponse>('/api/user/', credentials)
+			await setToLocalStorage('TOKEN', 'adfadfadlf')
 			return true
 		} catch (error: unknown) {
 			console.log(error)
@@ -34,8 +34,8 @@ export class AuthService {
 
 	static registerCompany = async (credentials: CompanyRegisterRequest): Promise<boolean> => {
 		try {
-			const response = await axios.post<UserAuthResponse>('/api/user/', credentials)
-			await setToLocalStorage('TOKEN', response.data.access_token)
+			// const response = await axios.post<UserAuthResponse>('/api/user/', credentials)
+			await setToLocalStorage('TOKEN', '123123123123')
 			return true
 		} catch (error: unknown) {
 			console.log(error)
@@ -44,9 +44,10 @@ export class AuthService {
 	}
 
 	static anonymousRegister = async (credentials: AnonymousRegisterRequest): Promise<boolean> => {
-		const response = await axios.post<AnonymousRegisterResponse>('/api/anonymous', credentials)
-		await setToLocalStorage('TOKEN', response.data.access_token)
-		return !!response
+		// const response = await axios.post<AnonymousRegisterResponse>('/api/anonymous', credentials)
+		await setToLocalStorage('TOKEN', '123123123123')
+		// return !!response
+		return true
 	}
 
 	static loginUser = async (credentials: UserLoginRequest): Promise<boolean> => {

@@ -43,7 +43,7 @@ export const IntroPage = () => {
 			device_uuid: await getDeviceInfo(),
 		})
 		if (response) {
-			nav.push('/main')
+			nav.push('/business_questions')
 		}
 	}
 
