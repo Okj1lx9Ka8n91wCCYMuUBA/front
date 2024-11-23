@@ -7,6 +7,7 @@ interface CustomSelectProps {
 	value: string
 	onChange: (value: string) => void
 	style?: React.CSSProperties
+	placeholder?: string
 }
 
 const SelectContainer = styled.div`
@@ -27,15 +28,24 @@ const OptionsList = styled.div`
 `
 
 const SelectedOption = styled.div`
-	padding: 8px 12px;
 	border-radius: 22px;
-	height: 30px;
-	font-size: 13px;
+	display: flex;
+	align-items: center;
+	padding-left: 25px;
+	color: gray;
+	font-size: 18px;
+	height: 52px;
 	border: 1px solid lightgray;
 	cursor: pointer;
 `
 
-export const CustomSelect: React.FC<CustomSelectProps> = ({ options, value, onChange, style }) => {
+export const CustomSelect: React.FC<CustomSelectProps> = ({
+	options,
+	value,
+	onChange,
+	style,
+	placeholder,
+}) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const selectRef = useRef<HTMLDivElement | null>(null) // Create a ref for the select
 
@@ -62,7 +72,7 @@ export const CustomSelect: React.FC<CustomSelectProps> = ({ options, value, onCh
 	return (
 		<SelectContainer ref={selectRef} style={style}>
 			<SelectedOption onClick={() => setIsOpen(!isOpen)}>
-				{selectedOption ? selectedOption.label : 'Не указано'}
+				{selectedOption ? selectedOption.label : placeholder || 'Не указано'}
 			</SelectedOption>
 			{isOpen && (
 				<OptionsList>

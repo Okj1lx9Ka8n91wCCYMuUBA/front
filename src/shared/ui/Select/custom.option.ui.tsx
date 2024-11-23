@@ -12,7 +12,7 @@ const OptionContainer = styled.div`
 	cursor: pointer;
 	height: 30px;
 	font-size: 13px;
-	background-color: black;
+	background-color: white;
 	font-weight: 300;
 	transition: background-color 0.2s ease;
 

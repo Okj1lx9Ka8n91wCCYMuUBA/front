@@ -2,7 +2,7 @@ import axios from 'axios'
 import { getFromLocalStorage } from '../hooks/useStorage.ts'
 
 const api = axios.create({
-	baseURL: 'http://localhost:8000/api/v1',
+	baseURL: 'http://45.12.136.78:8000/api/v1',
 	headers: {
 		'Content-Type': 'application/json',
 	},
