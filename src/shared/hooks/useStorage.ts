@@ -12,8 +12,8 @@ export const getFromLocalStorage = async (
 	}
 	try {
 		return JSON.parse(result)
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	} catch (e: unknown) {
-		console.log(e)
 		return result
 	}
 }

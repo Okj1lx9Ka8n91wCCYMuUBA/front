@@ -2,6 +2,8 @@ import { IonPage, useIonRouter } from '@ionic/react'
 import { useEffect } from 'react'
 import { getFromLocalStorage } from '../../shared/hooks/useStorage.ts'
 import { getAuthStore } from '../../entities/User/model/authStore.ts'
+import { AuthService } from '../../entities/User/api'
+import { Device } from '@capacitor/device'
 
 export const IntroPage = () => {
 	const nav = useIonRouter()
@@ -29,7 +31,19 @@ export const IntroPage = () => {
 		nav.push('/auth_first_step')
 	}
 
-	const handleNoAuth = () => {}
+	const handleNoAuth = async () => {
+		const getDeviceInfo = async () => {
+			const info = await Device.getId()
+			return info.identifier
+		}
+
+		const response: boolean = await AuthService.anonymousRegister({
+			device_uuid: await getDeviceInfo(),
+		})
+		if (response) {
+			nav.push('/main')
+		}
+	}
 
 	return (
 		<IonPage

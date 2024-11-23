@@ -4,3 +4,7 @@ export type UserRegisterRequest = {
 	email: string
 	password: string
 }
+
+export type AnonymousRegisterRequest = {
+	device_uuid: string
+}

@@ -1,5 +1,11 @@
-import { UserRegisterRequest, UserRegisterResponse } from '../types'
+import {
+	AnonymousRegisterRequest,
+	AnonymousRegisterResponse,
+	UserRegisterRequest,
+	UserRegisterResponse,
+} from '../types'
 import axios from 'axios'
+import { setToLocalStorage } from '../../../shared/hooks/useStorage.ts'
 
 export class AuthService {
 	static users = async (): Promise<UserRegisterResponse[]> => {
@@ -22,6 +28,12 @@ export class AuthService {
 			console.log(error)
 			throw Error('Ошибка при регистрации')
 		}
+	}
+
+	static anonymousRegister = async (credentials: AnonymousRegisterRequest): Promise<boolean> => {
+		const response = await axios.post<AnonymousRegisterResponse>('/api/anonymous', credentials)
+		await setToLocalStorage('TOKEN', response.data.access_token)
+		return !!response
 	}
 
 	static loginUser = async () => {
