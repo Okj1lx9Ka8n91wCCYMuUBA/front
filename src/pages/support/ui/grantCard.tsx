@@ -1,4 +1,5 @@
 import { CSSProperties, FC } from 'react'
+import { useIonRouter } from '@ionic/react'
 
 interface GrantCardProps {
 	grant: {
@@ -15,6 +16,8 @@ interface GrantCardProps {
 }
 
 export const GrantCard: FC<GrantCardProps> = ({ grant, style }) => {
+	const nav = useIonRouter()
+
 	return (
 		<div style={style} className={'bg-white rounded-[10px] p-3'}>
 			<div className='flex justify-between'>
@@ -39,7 +42,9 @@ export const GrantCard: FC<GrantCardProps> = ({ grant, style }) => {
 						<span className='text-[#1C78F5]'>{grant.maxGrant}</span>
 					</div>
 				</div>
-				<button className={'blue_button w-fit h-fit px-3 py-1 text-[12px]'}>
+				<button
+					className={'blue_button w-fit h-fit px-3 py-1 text-[12px]'}
+					onClick={() => nav.push(`/grant/${grant.id}`)}>
 					Подробнее
 				</button>
 			</div>

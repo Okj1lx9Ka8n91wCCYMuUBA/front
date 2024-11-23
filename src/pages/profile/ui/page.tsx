@@ -24,7 +24,11 @@ export const ProfilePage = observer(() => {
 							width={101}
 							height={101}
 						/>
-						<div className='text-[21px] mt-2'>{userState.name}</div>
+						<div className='text-[21px] mt-2'>
+							{userState.isRegistered
+								? userState.name
+								: 'Незарегистрированный пользователь'}
+						</div>
 					</div>
 					<div className='mt-2'>
 						<div className='w-11 h-11 flex items-center justify-center bg-white rounded-full'>

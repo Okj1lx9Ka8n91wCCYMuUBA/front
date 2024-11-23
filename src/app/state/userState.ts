@@ -4,7 +4,7 @@ import { UserInfoService } from '../../entities/User/api'
 import { UserInfo } from '../../entities/User/types/userInfo.ts'
 
 export class UserState {
-	public isRegistered: boolean = false
+	public isRegistered: boolean = true
 	public name: string = 'Иван Иванов'
 	public image: string = DefaultUserImage
 

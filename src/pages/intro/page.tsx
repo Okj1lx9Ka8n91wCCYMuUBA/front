@@ -4,6 +4,7 @@ import { getFromLocalStorage } from '../../shared/hooks/useStorage.ts'
 import { getAuthStore } from '../../entities/User/model/authStore.ts'
 import { AuthService } from '../../entities/User/api'
 import { Device } from '@capacitor/device'
+import { userState } from '../../app/state/userState.ts'
 
 export const IntroPage = () => {
 	const nav = useIonRouter()
@@ -17,6 +18,7 @@ export const IntroPage = () => {
 			if (typeof token === 'string') {
 				nav.push('/main')
 			}
+			userState.isRegistered = false
 		}
 		getToken().then()
 	}, [nav])
