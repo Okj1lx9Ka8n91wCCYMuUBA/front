@@ -32,7 +32,22 @@ export const GrantApplicationPage = () => {
 	}
 
 	if (isCheckPageOpened) {
-		return <CheckPage />
+		return (
+			<CheckPage
+				fields={[
+					{ title: 'Фамилия', data: 'Иванова' },
+					{ title: 'Имя', data: 'Анна' },
+				]}
+				onContinue={() => {
+					setIsCameraOpen(false)
+					setIsCheckPageOpen(false)
+				}}
+				onScanAgain={() => {
+					setIsCheckPageOpen(false)
+					setIsCameraOpen(true)
+				}}
+			/>
+		)
 	}
 
 	return (
