@@ -16,10 +16,20 @@
     @apply w-[42px] h-[42px] rounded-full shrink-0;
 }
 
-.message {
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
 
+.message {
     @apply flex gap-x-2;
-    max-width: calc(100% - 50px);
+    max-width: calc(100vw - 50px);
+    word-wrap: break-word;
+    animation: appear 300ms ease;
 
     &:not(:first-child) {
         margin-top: 16px;
@@ -48,7 +58,7 @@
 }
 
 .bot_message_text {
-    @apply text-[#244369] bg-[#D9E6FF] rounded-[20px] rounded-tl-none whitespace-pre
+    @apply text-[#244369] bg-[#D9E6FF] rounded-[20px] rounded-tl-none
 }
 
 .short_options_container {
