@@ -8,6 +8,6 @@ export type UserGrant = {
 	}
 	grantApplication: {
 		time: string
-		status: 'Участник'
+		status: 'Участник' | 'Отозвана'
 	}
 }

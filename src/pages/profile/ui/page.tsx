@@ -6,6 +6,7 @@ import { Picker } from '../../../widgets/Picker'
 import { RequestsList } from './requestsList.ui.tsx'
 import { observer } from 'mobx-react'
 import { useEffect } from 'react'
+import { DocumentsList } from './documents.tsx'
 
 export const ProfilePage = observer(() => {
 	useEffect(() => {
@@ -41,7 +42,7 @@ export const ProfilePage = observer(() => {
 			<Picker
 				blocks={[
 					{ title: 'Заявки', elements: <RequestsList /> },
-					{ title: 'Документы', elements: <div>Документы</div> },
+					{ title: 'Документы', elements: <DocumentsList /> },
 				]}
 			/>
 			<Footer />
