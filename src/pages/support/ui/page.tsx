@@ -2,6 +2,7 @@ import { IonPage } from '@ionic/react'
 import { Footer } from '../../../shared/layout/Footer'
 import { Picker } from '../../../widgets/Picker'
 import { GrantCard } from './grantCard.tsx'
+import { Tinder } from '../../../widgets/Tinder'
 
 export const SupportPage = () => {
 	return (
@@ -28,9 +29,7 @@ export const SupportPage = () => {
 							),
 						},
 						{ title: 'Акселераторы', elements: <div>Акселераторы</div> },
-						{ title: 'Кредиты', elements: <div>Кредиты</div> },
-						{ title: 'Тиндер заявок', elements: <div>Тиндер заявок</div> },
-						{ title: 'Тиндер заявок', elements: <div>Тиндер заявок</div> },
+						{ title: 'Тиндер заявок', elements: <Tinder /> },
 					]}></Picker>
 			</div>
 			<Footer />
