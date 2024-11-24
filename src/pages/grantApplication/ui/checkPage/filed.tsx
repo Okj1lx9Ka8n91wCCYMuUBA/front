@@ -8,10 +8,11 @@ interface CheckInfoField {
 
 export const CheckField: FC<CheckInfoField> = ({ data, setData, title }) => {
 	return (
-		<div>
-			<div>{title}</div>
+		<div className='w-full'>
+			<div className='text-[18px] font-light'>{title}</div>
 			<input
 				type='text'
+				className='w-full text-[#7A7A7C] outline-none border-b-[1px] border-b-[#EAEAEA]'
 				value={data}
 				onChange={(e: ChangeEvent<HTMLInputElement>) => {
 					setData(e.target.value)
