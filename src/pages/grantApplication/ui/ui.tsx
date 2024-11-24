@@ -1,4 +1,4 @@
-import { IonPage } from '@ionic/react'
+import { IonPage, useIonRouter } from '@ionic/react'
 import { BackArrowHeader } from '../../../shared/layout/BackArrowHeader'
 import { Heading } from '../../../shared/ui/Heading'
 import { useState } from 'react'
@@ -6,13 +6,14 @@ import { CustomSelect } from '../../../shared/ui/Select/custom.select.ui.tsx'
 import { FileInput } from './fileInput.tsx'
 
 export const GrantApplicationPage = () => {
+	const nav = useIonRouter()
 	const [project, setProject] = useState<string>('')
 	const [nomination, setNomination] = useState<string>('')
 	const [file1, setFile1] = useState<File | null>(null)
 
 	return (
 		<IonPage className={'p-5 h-[100vh] bg-[#F9F9F9]'}>
-			<BackArrowHeader style={{ alignItems: 'start' }}>
+			<BackArrowHeader style={{ alignItems: 'start' }} goBackFunction={() => nav.goBack()}>
 				<Heading style={{ marginTop: -5 }}>
 					Подача заявки на конкурс Росмолодёжь.Гранты в рамках Молодёжного слёта
 					«Поколение Z»

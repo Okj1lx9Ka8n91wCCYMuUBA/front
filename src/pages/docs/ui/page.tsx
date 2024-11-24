@@ -4,15 +4,13 @@ import Webcam from 'react-webcam'
 import { useState, useEffect, useRef } from 'react'
 import './page.styles.css'
 import { Footer } from '../../../shared/layout/Footer'
+import { BackArrowHeader } from '../../../shared/layout/BackArrowHeader'
+import { Heading } from '../../../shared/ui/Heading'
+import Camera from '../../../assets/images/Camera.png'
 
 export const DocsPage = () => {
-	const [showCam, setShowCam] = useState<boolean>(false)
 	const [screenshots, setScreenshots] = useState<string[]>([])
 	const [isCameraReady, setIsCameraReady] = useState<boolean>(false)
-	const [devices, setDevices] = useState<MediaDeviceInfo[]>([])
-	const [deviceId, setDeviceId] = useState<string | undefined>(undefined)
-	const [hasCameraPermission, setHasCameraPermission] = useState<boolean>(false)
-	const [currentDeviceIndex, setCurrentDeviceIndex] = useState<number>(0)
 
 	const webcamRef = useRef<Webcam>(null)
 	const overlayRef = useRef<HTMLDivElement>(null)
@@ -47,7 +45,6 @@ export const DocsPage = () => {
 
 				setScreenshots([...screenshots, canvas.toDataURL()])
 			}
-			setShowCam(false)
 		}
 	}
 
@@ -91,7 +88,6 @@ export const DocsPage = () => {
 		const checkCameraPermission = async () => {
 			try {
 				const stream = await navigator.mediaDevices.getUserMedia({ video: true })
-				setHasCameraPermission(true)
 				stream.getTracks().forEach(track => track.stop())
 			} catch (error) {
 				console.error('Camera permission denied', error)
@@ -101,83 +97,45 @@ export const DocsPage = () => {
 		checkCameraPermission()
 	}, [])
 
-	useEffect(() => {
-		const getDevices = async () => {
-			if (!hasCameraPermission) return
-
-			const devices = await navigator.mediaDevices.enumerateDevices()
-			const videoDevices = devices.filter(device => device.kind === 'videoinput')
-			setDevices(videoDevices)
-			if (videoDevices.length > 0) {
-				setDeviceId(videoDevices[0].deviceId)
-			}
-		}
-		getDevices()
-	}, [hasCameraPermission])
-
-	const handleDeviceChange = () => {
-		const nextIndex = (currentDeviceIndex + 1) % devices.length
-		setCurrentDeviceIndex(nextIndex)
-		setDeviceId(devices[nextIndex].deviceId)
-	}
-
 	return (
 		<>
 			<IonPage
 				style={{
+					padding: 20,
 					height: 'calc(100vh - 74.5px)',
 					position: 'relative',
 					background: '#F9F9F9',
 				}}>
 				<Content>
-					<div className='px-4 py-3 w-full bg-white h-[72px] flex justify-center items-center text-[25px] font-medium'>
-						Документы
+					<BackArrowHeader>
+						<Heading>Сканирование документов</Heading>
+					</BackArrowHeader>
+
+					<div className='relative w-full h-[601px] mt-5'>
+						<Webcam
+							audio={false}
+							className='absolute inset-0  w-full h-full object-cover rounded-[10px]'
+							videoConstraints={{ height: 720, width: 1280 }}
+							ref={webcamRef}
+							onUserMedia={() => setIsCameraReady(true)}
+						/>
+						<div ref={overlayRef} className='absolute inset-0 z-[15]'></div>
+						<div className='absolute inset-0 flex justify-center rounded-[10px] items-center bg-black bg-opacity-20'>
+							<div className='relative w-[80%] h-[60%] border-1 bg-white bg-opacity-20 border-white rounded-lg'>
+								<div className='absolute inset-0 clip-path-rect'></div>
+							</div>
+						</div>
 					</div>
 
-					{showCam && (
-						<div
-							className={`fixed inset-0 flex justify-center bg-black items-center ${
-								isCameraReady ? '' : 'hidden'
-							}`}>
-							<div className='relative w-full max-w-md h-full z-[10]'>
-								<Webcam
-									audio={false}
-									className='absolute inset-0 w-full h-full object-cover'
-									videoConstraints={{ height: 720, width: 1280, deviceId }}
-									ref={webcamRef}
-									onUserMedia={() => setIsCameraReady(true)}
-								/>
-								<div ref={overlayRef} className='absolute inset-0 z-[15]'></div>
-								<div className='absolute inset-0 flex justify-center items-center bg-black bg-opacity-20'>
-									<div className='relative w-[80%] h-[60%] border-1 bg-white bg-opacity-20 border-white rounded-lg'>
-										<div className='absolute inset-0 clip-path-rect'></div>
-									</div>
-								</div>
-							</div>
-							<button
-								onClick={() => setShowCam(false)}
-								className='absolute top-4 right-4 bg-red-500 text-white px-4 py-2 rounded z-[20]'>
-								Прекратить сканирование
-							</button>
-							<button
-								onClick={capture}
-								className='absolute bottom-4 left-4 bg-blue-500 text-white px-4 py-2 rounded z-[20]'>
-								Сделать скриншот
-							</button>
-							<button
-								onClick={handleDeviceChange}
-								className='absolute bottom-4 right-4 bg-yellow-500 text-white px-4 py-2 rounded z-[20]'>
-								Переключить камеру
-							</button>
-						</div>
-					)}
-
-					{!showCam && <div className='w-[300px] h-[225px] border mx-auto'></div>}
-					<button
-						onClick={() => setShowCam(true)}
-						className='mt-4 bg-green-500 text-white px-4 py-2 rounded'>
-						Включить камеру
-					</button>
+					<div className={'flex justify-center mt-5'}>
+						<button
+							onClick={capture}
+							className={
+								'bg-[#1C78F5] w-[50px] h-[50px] flex items-center justify-center rounded-full'
+							}>
+							<img src={Camera} alt='Сделать скриншот' />
+						</button>
+					</div>
 
 					<div className='mt-4'>
 						{screenshots.map((screenshot, index) => (
@@ -191,7 +149,7 @@ export const DocsPage = () => {
 					</div>
 				</Content>
 			</IonPage>
-			{!showCam && <Footer />}
+			<Footer />
 		</>
 	)
 }

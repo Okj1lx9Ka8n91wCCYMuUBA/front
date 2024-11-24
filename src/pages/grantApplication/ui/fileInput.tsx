@@ -1,4 +1,4 @@
-import { ChangeEvent, Dispatch, FC, SetStateAction, useEffect, useRef } from 'react'
+import { ChangeEvent, Dispatch, FC, SetStateAction, useEffect, useRef, useState } from 'react'
 import FileInputImage from '../../../assets/images/FileInput.svg'
 import ScanImage from '../../../assets/images/ScannerImage.svg'
 import ExcelImage from '../../../assets/images/Excel.svg'
@@ -8,10 +8,12 @@ interface FileInputProps {
 	title: string
 	value: File | null
 	setValue: Dispatch<SetStateAction<File | null>>
+	onScan?: (setValue: Dispatch<SetStateAction<File>>) => void
 }
 
 export const FileInput: FC<FileInputProps> = ({ title, setValue, value }) => {
 	const fileInputRef = useRef<HTMLInputElement | null>(null)
+	const [isScanned, setIsScanned] = useState<boolean>(false)
 
 	const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const file = event.target.files?.[0] || null
