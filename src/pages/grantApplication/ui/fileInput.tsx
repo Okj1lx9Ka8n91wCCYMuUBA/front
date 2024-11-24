@@ -89,7 +89,7 @@ export const FileInput: FC<FileInputProps> = ({ title, setValue, value, onScan }
 		<>
 			<div className={'text-[18px] mt-5'}>{title}</div>
 			<div
-				className='px-1 py-3 bg-white w-fit flex gap-x-[1px] items-center rounded-[10px] mt-2'
+				className='px-1 py-3 bg-white w-[154px] flex gap-x-[1px] items-center rounded-[10px] mt-2'
 				style={{ boxShadow: '2px 0px 12.5px 0px #8D8D8D40' }}>
 				<img src={fileIcon} alt={'Файл'} />
 				<div>{value.name.length < 12 ? value.name : value.name.slice(0, 10) + '...'}</div>
