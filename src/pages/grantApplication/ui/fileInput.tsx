@@ -8,10 +8,10 @@ interface FileInputProps {
 	title: string
 	value: File | null
 	setValue: Dispatch<SetStateAction<File | null>>
-	onScan?: (setValue: Dispatch<SetStateAction<File>>) => void
+	onScan?: () => void
 }
 
-export const FileInput: FC<FileInputProps> = ({ title, setValue, value }) => {
+export const FileInput: FC<FileInputProps> = ({ title, setValue, value, onScan }) => {
 	const fileInputRef = useRef<HTMLInputElement | null>(null)
 	const [isScanned, setIsScanned] = useState<boolean>(false)
 
@@ -26,7 +26,10 @@ export const FileInput: FC<FileInputProps> = ({ title, setValue, value }) => {
 
 	useEffect(() => {
 		if (value) {
-			console.log(value)
+			if (value.name === 'captured-image.jpg') {
+				setIsScanned(true)
+			}
+			console.log(value.name)
 		}
 	}, [value])
 
@@ -50,7 +53,9 @@ export const FileInput: FC<FileInputProps> = ({ title, setValue, value }) => {
 						<img src={FileInputImage} alt='Загрузить файл' />
 						<div>Загрузить файл</div>
 					</button>
-					<button className='blue_button flex items-center text-[16px] justify-center h-11 gap-x-2'>
+					<button
+						className='blue_button flex items-center text-[16px] justify-center h-11 gap-x-2'
+						onClick={onScan}>
 						<img src={ScanImage} alt='Сканировать файл' />
 						<div>Сканировать</div>
 					</button>
@@ -62,6 +67,19 @@ export const FileInput: FC<FileInputProps> = ({ title, setValue, value }) => {
 					onChange={handleFileChange}
 				/>
 			</div>
+		)
+	}
+
+	if (isScanned) {
+		return (
+			<>
+				<div className={'text-[18px] mt-5'}>{title}</div>
+				<img
+					src={URL.createObjectURL(value)}
+					className='w-[79px] h-[76px] rounded-[10px] mt-2'
+					alt={'Ваше изображение'}
+				/>
+			</>
 		)
 	}
 

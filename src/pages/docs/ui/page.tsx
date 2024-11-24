@@ -1,14 +1,21 @@
 import { IonPage } from '@ionic/react'
 import { Content } from '../../../shared/layout/Content'
 import Webcam from 'react-webcam'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, Dispatch, SetStateAction, FC } from 'react'
 import './page.styles.css'
 import { Footer } from '../../../shared/layout/Footer'
 import { BackArrowHeader } from '../../../shared/layout/BackArrowHeader'
 import { Heading } from '../../../shared/ui/Heading'
 import Camera from '../../../assets/images/Camera.png'
 
-export const DocsPage = () => {
+interface DocsPageProps {
+	setCameraOpened: Dispatch<SetStateAction<boolean>>
+	setFile: Dispatch<SetStateAction<File | null>>
+	handleNext: () => void
+	onScan: () => void
+}
+
+export const DocsPage: FC<DocsPageProps> = ({ setFile, handleNext, setCameraOpened, onScan }) => {
 	const [screenshots, setScreenshots] = useState<string[]>([])
 	const [isCameraReady, setIsCameraReady] = useState<boolean>(false)
 
@@ -43,7 +50,15 @@ export const DocsPage = () => {
 					cropHeight
 				)
 
-				setScreenshots([...screenshots, canvas.toDataURL()])
+				canvas.toBlob(blob => {
+					if (blob) {
+						const file = new File([blob], 'captured-image.jpg', { type: 'image/jpeg' })
+						setScreenshots([...screenshots, canvas.toDataURL()])
+						setFile(file)
+						handleNext()
+						onScan()
+					}
+				}, 'image/jpeg')
 			}
 		}
 	}
@@ -107,7 +122,7 @@ export const DocsPage = () => {
 					background: '#F9F9F9',
 				}}>
 				<Content>
-					<BackArrowHeader>
+					<BackArrowHeader goBackFunction={() => setCameraOpened(false)}>
 						<Heading>Сканирование документов</Heading>
 					</BackArrowHeader>
 
@@ -137,16 +152,16 @@ export const DocsPage = () => {
 						</button>
 					</div>
 
-					<div className='mt-4'>
-						{screenshots.map((screenshot, index) => (
-							<img
-								key={index}
-								src={screenshot}
-								alt={`Screenshot ${index}`}
-								className='w-32 h-32 object-cover'
-							/>
-						))}
-					</div>
+					{/*<div className='mt-4'>*/}
+					{/*	{screenshots.map((screenshot, index) => (*/}
+					{/*		<img*/}
+					{/*			key={index}*/}
+					{/*			src={screenshot}*/}
+					{/*			alt={`Screenshot ${index}`}*/}
+					{/*			className='w-32 h-32 object-cover'*/}
+					{/*		/>*/}
+					{/*	))}*/}
+					{/*</div>*/}
 				</Content>
 			</IonPage>
 			<Footer />

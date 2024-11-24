@@ -4,12 +4,36 @@ import { Heading } from '../../../shared/ui/Heading'
 import { useState } from 'react'
 import { CustomSelect } from '../../../shared/ui/Select/custom.select.ui.tsx'
 import { FileInput } from './fileInput.tsx'
+import { DocsPage } from '../../docs'
+import { CheckPage } from './checkPage'
 
 export const GrantApplicationPage = () => {
 	const nav = useIonRouter()
 	const [project, setProject] = useState<string>('')
 	const [nomination, setNomination] = useState<string>('')
 	const [file1, setFile1] = useState<File | null>(null)
+	const [isCameraOpened, setIsCameraOpen] = useState<boolean>(false)
+	const [isCheckPageOpened, setIsCheckPageOpen] = useState<boolean>(false)
+
+	if (isCameraOpened) {
+		return (
+			<DocsPage
+				setCameraOpened={setIsCameraOpen}
+				setFile={setFile1}
+				onScan={() => {
+					setIsCheckPageOpen(true)
+					setIsCameraOpen(false)
+				}}
+				handleNext={() => {
+					console.log(123)
+				}}
+			/>
+		)
+	}
+
+	if (isCheckPageOpened) {
+		return <CheckPage />
+	}
 
 	return (
 		<IonPage className={'p-5 h-[100vh] bg-[#F9F9F9]'}>
@@ -39,7 +63,12 @@ export const GrantApplicationPage = () => {
 				value={nomination}
 				onChange={nomination => setNomination(nomination)}
 			/>
-			<FileInput title={'Баланс (форма 1)'} value={file1} setValue={setFile1} />
+			<FileInput
+				title={'Баланс (форма 1)'}
+				value={file1}
+				setValue={setFile1}
+				onScan={() => setIsCameraOpen(true)}
+			/>
 		</IonPage>
 	)
 }
