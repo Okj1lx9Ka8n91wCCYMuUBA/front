@@ -85,12 +85,13 @@ export const Tinder = () => {
 						</motion.div>
 					)}
 				</AnimatePresence>
-				{currentCardIndex >= cards.length && (
-					<div className='text-center text-gray-500 text-lg'>Нет больше карточек</div>
-				)}
 			</div>
-			<button className={'blue_button mt-6'}>Подать заявку</button>
-			<ProgressIndicator currentIndex={currentCardIndex} totalCards={cards.length} />
+			{currentCardIndex < cards.length && (
+				<>
+					<button className={'blue_button mt-6'}>Подать заявку</button>
+					<ProgressIndicator currentIndex={currentCardIndex} totalCards={cards.length} />
+				</>
+			)}
 		</div>
 	)
 }

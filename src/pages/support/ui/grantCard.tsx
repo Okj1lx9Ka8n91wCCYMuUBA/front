@@ -21,7 +21,7 @@ export const GrantCard: FC<GrantCardProps> = ({ grant, style }) => {
 	return (
 		<div style={style} className={'bg-white rounded-[10px] p-3'}>
 			<div className='flex justify-between'>
-				<div className='max-w-[50%] text-[14px] leading-5 '>{grant.title}</div>
+				<div className='max-w-[70%] text-[14px] leading-5 '>{grant.title}</div>
 				<div className={'text-[10px]'}>{grant.time}</div>
 			</div>
 			<div className={'text-[10px] text-[#7A7A7C] mt-1'}>{grant.organizer}</div>

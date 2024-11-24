@@ -3,45 +3,68 @@ import { Footer } from '../../../shared/layout/Footer'
 import { Picker } from '../../../widgets/Picker'
 import { GrantCard } from './grantCard.tsx'
 import { Tinder } from '../../../widgets/Tinder'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { set } from 'zod'
+
+interface Grant {
+	id: string
+	image_url: string
+	grant_min: string
+	grant_max: string
+	documents: string
+	title: string
+	description: string
+	implementation_period: string
+	competition_name: string
+	contacts: string
+	url: string
+	created_at: string
+}
 
 export const SupportPage = () => {
+	const [grants, setGrants] = useState<Grant[]>([])
+
+	useEffect(() => {
+		const fetchGrants = async () => {
+			const response = await axios.get('/api/parsed_data/grants/')
+			setGrants(response.data.data)
+		}
+
+		fetchGrants()
+	}, [])
+
+	useEffect(() => {
+		console.log(grants)
+	}, [grants])
+
 	return (
-		<IonPage className='h-[100vh]'>
+		<IonPage className='h-[180vh]'>
 			<div className='bg-[#F9F9F9] h-full p-5'>
 				<Picker
 					blocks={[
 						{
 							title: 'Гранты',
 							elements: (
-								<>
-									<GrantCard
-										style={{ marginTop: 20 }}
-										grant={{
-											id: 'asdfasdfadf',
-											title: 'Молодёжный слёт «Поколение Z»',
-											time: '25.10.2024-27.10.2024',
-											organizer: 'Конкурс Росмолодёжь.Гранты',
-											type: 'Всероссийский',
-											format: 'Форум',
-											minGrant: '5 000,00 ₽',
-											maxGrant: '1 000 000,00₽',
-										}}
-									/>
-									<GrantCard
-										style={{ marginTop: 20 }}
-										grant={{
-											id: 'asdfasdfadf',
-											title: 'Первый конкурс на предоставление грантов Губернатора Челябинской области',
-											time: 'Закрыто',
-											organizer:
-												'Фонд "Центр поддержки гражданских инициатив и развития некоммерческого сектора экономики Челябинской области"',
-											type: 'Челябинская область',
-											format: 'Форум',
-											minGrant: '6 000 000  ₽',
-											maxGrant: '1 000 000,00₽',
-										}}
-									/>
-								</>
+								<div className={'flex flex-col gap-y-3 mt-5'}>
+									{' '}
+									{grants.map(grant => {
+										return (
+											<GrantCard
+												grant={{
+													id: grant.id,
+													title: grant.title,
+													time: grant.implementation_period,
+													organizer: grant.competition_name,
+													type: 'Общероссийский',
+													format: 'Грант',
+													minGrant: grant.min || 'Не указано',
+													maxGrant: grant.max || 'Не указано',
+												}}
+											/>
+										)
+									})}
+								</div>
 							),
 						},
 						{
