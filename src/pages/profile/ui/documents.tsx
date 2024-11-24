@@ -6,7 +6,7 @@ export const DocumentsList = () => {
 
 	useEffect(() => {
 		const fetchDocuments = async () => {
-			const docs = await DocsService.getDocs()
+			// const docs = await DocsService.getDocs()
 			setDocuments([])
 		}
 

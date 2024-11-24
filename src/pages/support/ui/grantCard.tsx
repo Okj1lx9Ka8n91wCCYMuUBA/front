@@ -35,14 +35,14 @@ export const GrantCard: FC<GrantCardProps> = ({ grant, style }) => {
 				<div>
 					<div className={'text-[10px] mt-1 text-[#7A7A7C] flex items-baseline gap-x-1'}>
 						<div className={'text-[10px]'}>Минимальный размер гранта:</div>
-						<div className='text-[#1C78F5] text-[15px]'>5 000,00 ₽</div>
+						<div className='text-[#1C78F5] text-[15px]'>{grant.minGrant}</div>
 					</div>
 					<div
 						className={
 							'text-[10px] mt-[-3px] text-[#7A7A7C] flex items-baseline gap-x-1'
 						}>
 						<div className={'text-[10px]'}>Максимальный размер гранта:</div>
-						<div className='text-[#1C78F5] text-[15px]'>1 000 000,00 ₽</div>
+						<div className='text-[#1C78F5] text-[15px]'>{grant.maxGrant}</div>
 					</div>
 				</div>
 				<button
