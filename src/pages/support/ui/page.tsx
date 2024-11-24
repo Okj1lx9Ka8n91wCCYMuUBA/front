@@ -29,7 +29,7 @@ export const SupportPage = () => {
 							),
 						},
 						{ title: 'Акселераторы', elements: <div>Акселераторы</div> },
-						{ title: 'Тиндер заявок', elements: <Tinder /> },
+						{ title: 'Тиндер заявок', elements: <Tinder cards={[]} /> },
 					]}></Picker>
 			</div>
 			<Footer />

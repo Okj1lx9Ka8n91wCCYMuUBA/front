@@ -22,7 +22,10 @@ export const BotMessage: FC<BotMessageProps> = observer(({ message, style }) => 
 				<div className='message_time'>{message.time}</div>
 				<div className='message_text bot_message_text'>{message.text}</div>
 				{message.options && (
-					<BotMessageOptions options={message.options} isWorking={true} />
+					<BotMessageOptions
+						options={message.options}
+						isWorking={messagesStore.lastMessage === message}
+					/>
 				)}
 			</div>
 		</div>
