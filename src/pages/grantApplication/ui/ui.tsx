@@ -1,4 +1,4 @@
-import { IonFooter, IonPage, useIonRouter } from '@ionic/react'
+import { IonPage, useIonRouter } from '@ionic/react'
 import { BackArrowHeader } from '../../../shared/layout/BackArrowHeader'
 import { Heading } from '../../../shared/ui/Heading'
 import { useEffect, useState } from 'react'
@@ -8,18 +8,26 @@ import { DocsPage } from '../../docs'
 import { CheckPage } from './checkPage'
 import { Content } from '../../../shared/layout/Content.ts'
 import { useParams } from 'react-router'
-import { Footer } from '../../../shared/layout/Footer'
+import { observer } from 'mobx-react'
+import { grantStore } from '../../../entities/GrantRequests/model/grant.store.ts'
+import { GrantDTO } from '../../../entities/GrantRequests'
 
-const fileNames = ['Баланс (форма 1)', 'Отчет о прибылях и убытках (форма 2)', 'Скан паспорта']
-
-export const GrantApplicationPage = () => {
+export const GrantApplicationPage = observer(() => {
 	const { grantID } = useParams<{ grantID: string }>()
+	const grant: GrantDTO | null = grantStore.activeGrant
 	const nav = useIonRouter()
 	const [project, setProject] = useState<string>('')
 	const [nomination, setNomination] = useState<string>('')
+	if (!grant) {
+		return
+	}
+	const fileNames = grant.documents.split(',').splice(0, 3)
+	fileNames.push('Левая сторона паспорта')
+	fileNames.push('Правая сторона паспорта')
 	const [files, setFiles] = useState<Array<{ file: File | null; isCameraOpened: boolean }>>(
 		fileNames.map(() => ({ file: null, isCameraOpened: false }))
 	)
+
 	const [isCheckPageOpened, setIsCheckPageOpen] = useState<boolean>(false)
 	const [isAbleToConfirm, setIsAbleToConfirm] = useState<boolean>(false)
 
@@ -98,22 +106,21 @@ export const GrantApplicationPage = () => {
 	}
 
 	return (
-		<IonPage className={'p-5 h-[85vh] bg-[#F9F9F9]'}>
+		<IonPage className={'p-5 h-[90vh] bg-[#F9F9F9]'}>
 			<Content>
 				<BackArrowHeader
 					style={{ alignItems: 'start' }}
 					goBackFunction={() => nav.goBack()}>
 					<Heading style={{ marginTop: -5 }}>
-						Подача заявки на конкурс Росмолодёжь.Гранты в рамках Молодёжного слёта
-						«Поколение Z»
+						Подача заявки на конкурс {grant.title}
 					</Heading>
 				</BackArrowHeader>
 				<CustomSelect
 					style={{ marginTop: 20 }}
 					placeholder={'Выберите проект'}
 					options={[
-						{ value: 'Опция 2', label: 'Первый проект' },
-						{ value: 'Опция 3', label: 'Второй проект' },
+						{ value: 'Опция 2', label: 'Основной грант' },
+						{ value: 'Опция 3', label: 'Грант для развития' },
 					]}
 					value={project}
 					onChange={option => setProject(option)}
@@ -122,8 +129,8 @@ export const GrantApplicationPage = () => {
 					style={{ marginTop: 17 }}
 					placeholder={'Выберите номинацию'}
 					options={[
-						{ value: 'Опция 2', label: 'Первая номинация' },
-						{ value: 'Опция 3', label: 'Вторая номинация' },
+						{ value: 'Опция 2', label: 'Номинация на помощь' },
+						{ value: 'Опция 3', label: 'Номинация на поддержку' },
 					]}
 					value={nomination}
 					onChange={nomination => setNomination(nomination)}
@@ -141,7 +148,7 @@ export const GrantApplicationPage = () => {
 			<div>
 				<button
 					onClick={handleNextPage}
-					className={`text-white w-full flex items-center justify-center rounded-[35px] h-14 text-[18px]`}
+					className={`text-white w-full mt-5 flex items-center justify-center rounded-[35px] h-14 text-[18px]`}
 					style={{
 						background: !isAbleToConfirm
 							? '#7A7A7C'
@@ -152,4 +159,4 @@ export const GrantApplicationPage = () => {
 			</div>
 		</IonPage>
 	)
-}
+})

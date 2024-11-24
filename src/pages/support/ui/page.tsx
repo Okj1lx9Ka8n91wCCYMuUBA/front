@@ -5,25 +5,11 @@ import { GrantCard } from './grantCard.tsx'
 import { Tinder } from '../../../widgets/Tinder'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { set } from 'zod'
-
-interface Grant {
-	id: string
-	image_url: string
-	grant_min: string
-	grant_max: string
-	documents: string
-	title: string
-	description: string
-	implementation_period: string
-	competition_name: string
-	contacts: string
-	url: string
-	created_at: string
-}
+import { GrantDTO } from '../../../entities/GrantRequests'
+import { grantStore } from '../../../entities/GrantRequests/model/grant.store.ts'
 
 export const SupportPage = () => {
-	const [grants, setGrants] = useState<Grant[]>([])
+	const [grants, setGrants] = useState<GrantDTO[]>([])
 
 	useEffect(() => {
 		const fetchGrants = async () => {
@@ -51,6 +37,7 @@ export const SupportPage = () => {
 									{grants.map(grant => {
 										return (
 											<GrantCard
+												onClick={() => (grantStore.activeGrant = grant)}
 												grant={{
 													id: grant.id,
 													title: grant.title,

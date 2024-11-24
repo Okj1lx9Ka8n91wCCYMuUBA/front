@@ -2,16 +2,22 @@ import { IonPage, useIonRouter } from '@ionic/react'
 import { Heading } from '../../../shared/ui/Heading'
 import { BackArrowHeader } from '../../../shared/layout/BackArrowHeader'
 import { Centered } from '../../../shared/layout/Centered'
+import { observer } from 'mobx-react'
+import { grantStore } from '../../../entities/GrantRequests/model/grant.store.ts'
+import { GrantDTO } from '../../../entities/GrantRequests'
 
-export const GrantRequestedPage = () => {
+export const GrantRequestedPage = observer(() => {
 	const nav = useIonRouter()
+	const grant: GrantDTO | null = grantStore.activeGrant
+
+	if (!grant) {
+		return
+	}
+
 	return (
 		<IonPage className='h-[100vh] p-5'>
 			<BackArrowHeader style={{ alignItems: 'start' }} goBackFunction={() => nav.goBack()}>
-				<Heading style={{ marginTop: -5 }}>
-					Подача заявки на конкурс Росмолодёжь.Гранты в рамках Молодёжного слёта
-					«Поколение Z»
-				</Heading>
+				<Heading style={{ marginTop: -5 }}>Подача заявки на грант {grant.title}</Heading>
 			</BackArrowHeader>
 			<Centered style={{ flexDirection: 'column' }}>
 				<div className={'mt-12 text-[18px] font-light'}>Данные успешно отправлены</div>
@@ -31,4 +37,4 @@ export const GrantRequestedPage = () => {
 			</Centered>
 		</IonPage>
 	)
-}
+})

@@ -12,10 +12,11 @@ interface GrantCardProps {
 		minGrant: string
 		maxGrant: string
 	}
+	onClick?: () => void
 	style?: CSSProperties
 }
 
-export const GrantCard: FC<GrantCardProps> = ({ grant, style }) => {
+export const GrantCard: FC<GrantCardProps> = ({ grant, style, onClick }) => {
 	const nav = useIonRouter()
 
 	return (
@@ -47,7 +48,10 @@ export const GrantCard: FC<GrantCardProps> = ({ grant, style }) => {
 				</div>
 				<button
 					className={'blue_button w-fit h-fit px-3 py-1 text-[12px]'}
-					onClick={() => nav.push(`/grant/${grant.id}`)}>
+					onClick={() => {
+						if (onClick) onClick()
+						nav.push(`/grant/${grant.id}`)
+					}}>
 					Подробнее
 				</button>
 			</div>
