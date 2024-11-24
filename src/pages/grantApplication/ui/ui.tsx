@@ -8,6 +8,7 @@ import { DocsPage } from '../../docs'
 import { CheckPage } from './checkPage'
 import { Content } from '../../../shared/layout/Content.ts'
 import { useParams } from 'react-router'
+import { Footer } from '../../../shared/layout/Footer'
 
 const fileNames = ['Баланс (форма 1)', 'Отчет о прибылях и убытках (форма 2)', 'Скан паспорта']
 
@@ -97,7 +98,7 @@ export const GrantApplicationPage = () => {
 	}
 
 	return (
-		<IonPage className={'p-5 h-[90vh] bg-[#F9F9F9]'}>
+		<IonPage className={'p-5 h-[85vh] bg-[#F9F9F9]'}>
 			<Content>
 				<BackArrowHeader
 					style={{ alignItems: 'start' }}
@@ -137,7 +138,7 @@ export const GrantApplicationPage = () => {
 					/>
 				))}
 			</Content>
-			<IonFooter>
+			<div>
 				<button
 					onClick={handleNextPage}
 					className={`text-white w-full flex items-center justify-center rounded-[35px] h-14 text-[18px]`}
@@ -148,7 +149,7 @@ export const GrantApplicationPage = () => {
 					}}>
 					Подтвердить данные
 				</button>
-			</IonFooter>
+			</div>
 		</IonPage>
 	)
 }
