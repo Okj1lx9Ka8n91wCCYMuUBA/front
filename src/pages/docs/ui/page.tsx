@@ -10,7 +10,7 @@ import Camera from '../../../assets/images/Camera.png'
 
 interface DocsPageProps {
 	setCameraOpened: Dispatch<SetStateAction<boolean>>
-	setFile: Dispatch<SetStateAction<File | null>>
+	setFile: (file: File | null) => void
 	handleNext: () => void
 	onScan: () => void
 }
